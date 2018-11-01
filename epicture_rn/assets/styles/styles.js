@@ -22,4 +22,10 @@ export default {
   buttonContainer: {
     margin: 20
   },
+  profile_header: {
+    marginRight: 10
+  },
+  image_profile_header: {
+    borderRadius: 100
+  }
 };

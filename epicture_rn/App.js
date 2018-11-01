@@ -3,13 +3,13 @@ import SecondScreen from "./assets/pages/page2";
 import TroisScreen from "./assets/pages/page3";
 import HomeScreen from "./assets/pages/homescreen";
 import React from 'react';
-import {Alert, StyleSheet, Text, View, Button, Dimensions  } from 'react-native';
+import {Alert, TouchableNativeFeedback, Text, View, Image, Button, Dimensions  } from 'react-native';
 import {
   createStackNavigator,
   createDrawerNavigator,
 } from 'react-navigation';
 
-
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const DrawerStack = createDrawerNavigator({
   screen1: { screen: HomeScreen },
@@ -33,18 +33,25 @@ const DrawerNavigation = createStackNavigator({
 }, {
   headerMode: 'float',
   navigationOptions: ({navigation}) => ({
-    headerStyle: {backgroundColor: '#4C3E54'},
-    title: 'Welcome!',
-    headerTintColor: 'white',
-	headerTitleStyle: {
-      textAlign: "center",
-      alignSelf: "center",
+    headerStyle: {backgroundColor: 'white'},
+    title: 'Images populaires',
+    headerTintColor: 'black',
+	  headerTitleStyle: {
 	  flex: 1
     },
-    headerRight: <View></View>, //logo de profile
-	headerLeft: <Text onPress={() => 
-		navigation.openDrawer()}>Menu</Text> // BURGER pour drawer
-  })
+    headerRight: (
+    <View style={ styles.profile_header }>
+      <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}} // image profile
+       style={{width: 35, height: 35, borderRadius: 100}} />
+    </View>
+    ),
+    headerLeft: (
+      <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('grey', true)} onPress={() => navigation.openDrawer()}>
+        <View style={{ marginLeft: 10, borderRadius: 100}}>
+          <Icon name="ios-menu" color="black" size={34}  />
+        </View>
+      </TouchableNativeFeedback>
+  )})
 })
 
 
