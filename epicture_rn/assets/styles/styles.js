@@ -29,8 +29,10 @@ export default {
   },
   drawerHeader: {
     flexDirection: 'row',
-    height: 110,
-    backgroundColor: 'white',
+    height: 120,
+    backgroundColor: '#f5f5f5',
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
     alignItems: 'center',
     justifyContent: 'space-around'
   },

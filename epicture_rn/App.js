@@ -22,7 +22,7 @@ const HeaderDrawer = (props) => (
         style={{width: 50, height: 50, borderRadius: 100}} />
       <Text numberOfLines={1} style={styles.drawerPseudo}>Pseudo</Text>
     </View>
-    <ScrollView>
+    <ScrollView style={{backgroundColor: 'white'}}>
       <DrawerItems {...props} />
     </ScrollView>
   </SafeAreaView>
@@ -31,16 +31,19 @@ const HeaderDrawer = (props) => (
 const DrawerStack = createDrawerNavigator({
   "Images Populaires": { screen: HomeScreen,
     navigationOptions: {
+      title: "Images Populaires",
       drawerIcon: ({tintColor}) => (<FontAwesomeIcon style={{color:tintColor}} name="star-o" color="black" size={24} />)
     }
    },
   "Mes favoris": { screen: SecondScreen,
     navigationOptions: {
+      title: "Mes favoris",
       drawerIcon: ({tintColor}) => (<FontAwesomeIcon style={{color:tintColor}} name="heart-o" color="black" size={24} />)
     } 
   },
   "Upload": { screen: TroisScreen,
     navigationOptions: {
+      title: "Upload",
       drawerIcon: ({tintColor}) => (<FeatherIcon style={{color:tintColor}} name="upload" color="black" size={24} />)
     }
   }
@@ -62,17 +65,19 @@ const LoginStack = createStackNavigator({
 	}
 })
 
+
+
+
 const DrawerNavigation = createStackNavigator({
   DrawerStack: { screen: DrawerStack }
-}, {
+}, 
+{
   headerMode: 'float',
-  navigationOptions: ({navigation}) => ({
+    navigationOptions: ({navigation}) => ({
+    title: "Welcome!",
     headerStyle: {backgroundColor: 'white'},
-    title: 'Images populaires',
     headerTintColor: 'black',
-	  headerTitleStyle: {
-	  flex: 1
-    },
+	  headerTitleStyle: {flex: 1},
     headerRight: (
     <View style={ styles.profile_header }>
       <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}} // image profile
