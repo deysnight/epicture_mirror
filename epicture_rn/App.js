@@ -3,18 +3,52 @@ import SecondScreen from "./assets/pages/page2";
 import TroisScreen from "./assets/pages/page3";
 import HomeScreen from "./assets/pages/homescreen";
 import React from 'react';
-import {Alert, TouchableNativeFeedback, Text, View, Image, Button, Dimensions  } from 'react-native';
+import { TouchableNativeFeedback, ScrollView, Text, View, Image } from 'react-native';
 import {
   createStackNavigator,
   createDrawerNavigator,
+  DrawerItems,
+  SafeAreaView,
 } from 'react-navigation';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+import IonIcon from 'react-native-vector-icons/Ionicons';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+
+const HeaderDrawer = (props) => (
+  <SafeAreaView style={{flex: 1}}>
+    <View style={styles.drawerHeader}>
+      <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}} // image profile
+        style={{width: 50, height: 50, borderRadius: 100}} />
+      <Text numberOfLines={1} style={styles.drawerPseudo}>Pseudo</Text>
+    </View>
+    <ScrollView>
+      <DrawerItems {...props} />
+    </ScrollView>
+  </SafeAreaView>
+);
 
 const DrawerStack = createDrawerNavigator({
-  screen1: { screen: HomeScreen },
-  screen2: { screen: SecondScreen },
-  screen3: { screen: TroisScreen },
+  "Images Populaires": { screen: HomeScreen,
+    navigationOptions: {
+      drawerIcon: ({tintColor}) => (<FontAwesomeIcon style={{color:tintColor}} name="star-o" color="black" size={24} />)
+    }
+   },
+  "Mes favoris": { screen: SecondScreen,
+    navigationOptions: {
+      drawerIcon: ({tintColor}) => (<FontAwesomeIcon style={{color:tintColor}} name="heart-o" color="black" size={24} />)
+    } 
+  },
+  "Upload": { screen: TroisScreen,
+    navigationOptions: {
+      drawerIcon: ({tintColor}) => (<FeatherIcon style={{color:tintColor}} name="upload" color="black" size={24} />)
+    }
+  }
+  }, {
+    contentComponent: HeaderDrawer,
+    contentOptions: {
+      activeTintColor: '#336B87'
+    }
 })
 
 const LoginStack = createStackNavigator({
@@ -48,7 +82,7 @@ const DrawerNavigation = createStackNavigator({
     headerLeft: (
       <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('grey', true)} onPress={() => navigation.openDrawer()}>
         <View style={{ marginLeft: 10, borderRadius: 100}}>
-          <Icon name="ios-menu" color="black" size={34}  />
+          <IonIcon name="ios-menu" color="black" size={34}  />
         </View>
       </TouchableNativeFeedback>
   )})
