@@ -2,6 +2,7 @@ import styles from './assets/styles/styles';
 import SecondScreen from "./assets/pages/page2";
 import TroisScreen from "./assets/pages/page3";
 import HomeScreen from "./assets/pages/homescreen";
+import Login from "./assets/pages/login";
 import React from 'react';
 import { TouchableNativeFeedback, ScrollView, Text, View, Image } from 'react-native';
 import {
@@ -55,7 +56,7 @@ const DrawerStack = createDrawerNavigator({
 })
 
 const LoginStack = createStackNavigator({
-	loginScreen: { screen: HomeScreen },
+	loginScreen: { screen: Login },
 }, {
 	headerMode: 'float',
 	navigationOptions: {
@@ -100,7 +101,7 @@ const RootStack = createStackNavigator({
 }, {
 	headerMode: 'none',
 	title: 'Main',
-	initialRouteName: 'drawerStack'  //'loginStack' a remettre quand le login sera fait
+	initialRouteName: 'loginStack'  //'loginStack' a remettre quand le login sera fait
 })
 
 
