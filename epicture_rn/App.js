@@ -106,34 +106,6 @@ const RootStack = createStackNavigator({
 
 
 
-/*const RootStack = createDrawerNavigator(
-  {
-	Home: {
-      screen: HomeScreen,
-      navigationOptions: {
-        title: 'Home Page',
-        drawerLabel: 'Home',
-      },
-    },
-    Second: SecondScreen,
-  },
-  {
-    initialRouteName: 'Home',
-	
-	navigationOptions: {
-      headerStyle: {
-        backgroundColor: 'white',
-      },
-      headerTintColor: 'black',
-      headerTitleStyle: {
-        fontWeight: 'normal',
-      },
-    },
-  }
-);*/
-
-//const AppStack = createStackNavigator({ RootStack : { screen: RootStack } });
-
 
 export default class App extends React.Component {
   render() {
