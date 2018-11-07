@@ -58,29 +58,23 @@ class Login extends React.Component {
       .then((responseJson) => {
 			SyncStorage.set('img_profile', responseJson.data.avatar);
 			SyncStorage.set('img_cover', responseJson.data.cover);
-		  
-         console.log(responseJson);
-		 console.log(responseJson.data.avatar);
-		 console.log(responseJson.data.cover);
       })
       .catch((error) => {
          console.error(error);
       });
    
 	
-	/*fetch('https://api.imgur.com/3/account/me/', {  
-		method: 'GET',
-		headers: {
-			'Accept': 'application/json',
-			'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
-		},
-	}).then(function(response) {
-		console.log("lol >>>> ", response.json())
-	})*/
 
 	
 	
-	
+	/*const json = await fetch('https://api.imgur.com/3/account/me/settings', {
+         method: 'GET',
+		 headers: {
+			'Accept': 'application/json',
+			'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
+		}
+      }).then(response => response.json());
+	console.log(json);*/
 	
 	
 	
