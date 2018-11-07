@@ -1,5 +1,4 @@
 import styles from '../styles/styles';
-import Blink from '../utils/Blink';
 import Greeting from '../utils/Greeting';
 import React from 'react';
 import {Alert, StyleSheet, Text, View, Button } from 'react-native';
@@ -8,21 +7,21 @@ import {
   DrawerNavigator,
 } from 'react-navigation';
 
-class SecondScreen extends React.Component {   
+class UploadScreen extends React.Component {   
 	
    render() {
     return (
       <View style={styles.container}>
 		<View style={[{flex: 1, backgroundColor: 'powderblue'}, styles.view]}>
-			<Greeting style={[styles.red, styles.bigblue]} name='Rexxar' />
+			<Greeting style={[styles.red, styles.bigblue]} name='TEST' />
 		</View>
         <View style={[{flex: 2, backgroundColor: 'skyblue'}, styles.view]}>
-			<Greeting style={[styles.red, styles.bigblue]} name='Rexxar' />
-			<Greeting style={[styles.bigblue, styles.red]} name='Jaina' />
+			<Greeting style={[styles.red, styles.bigblue]} name='TEST' />
+			<Greeting style={[styles.bigblue, styles.red]} name='TEST' />
 		</View>        
       </View>
     );
   }
 }
 
-export default SecondScreen;
+export default UploadScreen;

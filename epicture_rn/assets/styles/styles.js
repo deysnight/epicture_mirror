@@ -1,15 +1,11 @@
-
-
 export default {
   container: {
     flex: 1,
   },
-  
   view: {
 	justifyContent: 'center',
     alignItems: 'center',
   },
-
   bigblue: {
     color: 'blue',
     fontWeight: 'bold',

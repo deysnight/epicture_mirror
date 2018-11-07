@@ -31,7 +31,7 @@ class HomeScreen extends React.Component {
 			<Blink style={styles.red} text='I love to BITE' />
 			<View style={styles.buttonContainer}>
 				<Button
-				onPress={() => this.props.navigation.navigate('Second')}
+				onPress={() => this.props.navigation.navigate('SecondScreen')}
 				title="Press Me"
 				color="#841584"/>
 			</View>
