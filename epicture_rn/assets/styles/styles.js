@@ -18,26 +18,17 @@ export default {
   red: {
     color: 'red',
   },
+  
   buttonContainer: {
     margin: 20
   },
-  profile_header: {
-    marginRight: 10
-  },
-  image_profile_header: {
-    borderRadius: 100
-  },
-  drawerHeader: {
-    flexDirection: 'row',
-    height: 120,
-    backgroundColor: '#f5f5f5',
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1,
+  
+  loginstyles: {
+    paddingTop: 100,
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-around'
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    paddingBottom: 100
   },
-  drawerPseudo: {
-    fontSize: 16,
-    fontWeight: 'bold'
-  }
 };

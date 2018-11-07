@@ -16,7 +16,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <View style={loginstyles.container}>
+      <View style={styles.loginstyles}>
         <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}}
         style={{width: 140, height: 140, borderRadius: 100}} />
         <AwesomeButtonBlue backgroundColor="#90AFC5" backgroundDarker="#336B87"
@@ -89,16 +89,5 @@ class Login extends React.Component {
 
   };
 }
-
-const loginstyles = StyleSheet.create({
-  container: {
-    paddingTop: 100,
-    flex: 1,
-    alignItems: 'center',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    paddingBottom: 100
-  },
-});
 
 export default Login;
