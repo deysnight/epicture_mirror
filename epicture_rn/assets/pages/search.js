@@ -23,8 +23,6 @@ class SearchScreen extends React.Component {
             platform="default"
             placeholder='Rechercher' 
         />
-        <Divider style={{ backgroundColor: 'blue' }} />
-
         <View style={[{flex: 3, backgroundColor: 'skyblue'}, styles.view]}>
 			<Greeting style={[styles.red, styles.bigblue]} name='TEST' />
 			<Greeting style={[styles.bigblue, styles.red]} name='TEST' />

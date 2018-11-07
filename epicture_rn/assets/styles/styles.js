@@ -18,7 +18,6 @@ export default {
   buttonContainer: {
     margin: 20
   },
-  
   loginstyles: {
     paddingTop: 100,
     flex: 1,
@@ -27,4 +26,23 @@ export default {
     justifyContent: 'space-between',
     paddingBottom: 100
   },
+  profile_header: {
+    marginRight: 10
+  },
+  image_profile_header: {
+    borderRadius: 100
+  },
+  drawerHeader: {
+    flexDirection: 'row',
+    height: 120,
+    backgroundColor: '#f5f5f5',
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  drawerPseudo: {
+    fontSize: 16,
+    fontWeight: 'bold'
+  }
 };
