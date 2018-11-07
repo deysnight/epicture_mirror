@@ -1,7 +1,8 @@
 import styles from './assets/styles/styles';
-import SecondScreen from "./assets/pages/page2";
-import TroisScreen from "./assets/pages/page3";
+import FavorisScreen from "./assets/pages/favoris";
+import UploadScreen from "./assets/pages/upload";
 import HomeScreen from "./assets/pages/homescreen";
+import SearchScreen from "./assets/pages/search";
 import Login from "./assets/pages/login";
 import React from 'react';
 import { TouchableNativeFeedback, ScrollView, Text, View, Image } from 'react-native';
@@ -36,13 +37,19 @@ const DrawerStack = createDrawerNavigator({
       drawerIcon: ({tintColor}) => (<FontAwesomeIcon style={{color:tintColor}} name="star-o" color="black" size={24} />)
     }
    },
-  "Mes favoris": { screen: SecondScreen,
+   "Recherche": { screen: SearchScreen,
+    navigationOptions: {
+      title: "Recherche",
+      drawerIcon: ({tintColor}) => (<IonIcon style={{color:tintColor}} name="ios-search" color="black" size={24} />)
+    }
+   },
+  "Mes favoris": { screen: FavorisScreen,
     navigationOptions: {
       title: "Mes favoris",
       drawerIcon: ({tintColor}) => (<FontAwesomeIcon style={{color:tintColor}} name="heart-o" color="black" size={24} />)
     } 
   },
-  "Upload": { screen: TroisScreen,
+  "Upload": { screen: UploadScreen,
     navigationOptions: {
       title: "Upload",
       drawerIcon: ({tintColor}) => (<FeatherIcon style={{color:tintColor}} name="upload" color="black" size={24} />)
@@ -103,9 +110,6 @@ const RootStack = createStackNavigator({
 	title: 'Main',
 	initialRouteName: 'loginStack'  //'loginStack' a remettre quand le login sera fait
 })
-
-
-
 
 export default class App extends React.Component {
   render() {
