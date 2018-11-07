@@ -7,16 +7,6 @@ import SyncStorage from 'sync-storage';
 
 
 class HomeScreen extends React.Component {
-	navigationOptions: {
-      headerStyle: {
-        backgroundColor: 'black',
-      },
-      headerTintColor: 'black',
-      headerTitleStyle: {
-        fontWeight: 'normal',
-      },
-    };
-
    render() {
     return (
       <View style={styles.container}>
@@ -32,7 +22,7 @@ class HomeScreen extends React.Component {
 			<Blink style={styles.red} text={ SyncStorage.get('access_token') } />
 			<View style={styles.buttonContainer}>
 				<Button
-				onPress={() => this.props.navigation.navigate('SecondScreen')}
+				onPress={() => this.props.navigation.navigate('Profil')}
 				title="Press Me"
 				color="#841584"/>
 			</View>
