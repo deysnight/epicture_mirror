@@ -4,6 +4,7 @@ import UploadScreen from "./assets/pages/upload";
 import HomeScreen from "./assets/pages/homescreen";
 import SearchScreen from "./assets/pages/search";
 import Login from "./assets/pages/login";
+import SyncStorage from 'sync-storage';
 import React from 'react';
 import { TouchableNativeFeedback, ScrollView, Text, View, Image } from 'react-native';
 import {
@@ -19,10 +20,19 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const HeaderDrawer = (props) => (
   <SafeAreaView style={{flex: 1}}>
-    <View style={styles.drawerHeader}>
-      <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}} // image profile
+    <View style={{
+          flexDirection: 'row',
+          height: 120,
+          backgroundColor: '#f5f5f5',
+          borderBottomColor: 'grey',
+          borderBottomWidth: 1,
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          backgroundImage: {height: 120, resizeMode: 'cover', url: SyncStorage.get('img_cover')}
+        }}>
+      <Image source={{uri: SyncStorage.get('img_profile')}} // image profile
         style={{width: 50, height: 50, borderRadius: 100}} />
-      <Text numberOfLines={1} style={styles.drawerPseudo}>Pseudo</Text>
+      <Text numberOfLines={1} style={styles.drawerPseudo}>{SyncStorage.get('account_username')}</Text>
     </View>
     <ScrollView style={{backgroundColor: 'white'}}>
       <DrawerItems {...props} />
@@ -88,7 +98,7 @@ const DrawerNavigation = createStackNavigator({
 	  headerTitleStyle: {flex: 1},
     headerRight: (
     <View style={ styles.profile_header }>
-      <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}} // image profile
+      <Image source={{uri: SyncStorage.get('img_profile')}} // image profile
        style={{width: 35, height: 35, borderRadius: 100}} />
     </View>
     ),
