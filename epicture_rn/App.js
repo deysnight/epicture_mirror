@@ -32,7 +32,7 @@ const HeaderDrawer = (props) => (
           alignItems: 'center',
           justifyContent: 'space-around'}}
           >
-          <TouchableOpacity onPress={() => props.navigation.navigate('Profil')}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Profile')}>
             <Image source={{uri: SyncStorage.get('img_profile')}}
             style={{width: 60, height: 60, borderRadius: 100}} />
           </TouchableOpacity>
@@ -108,7 +108,7 @@ const DrawerNavigation = createStackNavigator({
 	  headerTitleStyle: {flex: 1},
     headerRight: (
     <View style={ styles.profile_header }>
-      <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
         <Image source={{uri: SyncStorage.get('img_profile')}}
           style={{width: 35, height: 35, borderRadius: 100}} />
       </TouchableOpacity>
