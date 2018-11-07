@@ -60,9 +60,9 @@ const LoginStack = createStackNavigator({
 }, {
 	headerMode: 'float',
 	navigationOptions: {
-		headerStyle: {backgroundColor: '#E73536'},
-		title: 'You are not logged in',
-		headerTintColor: 'white'
+		headerStyle: {backgroundColor: 'white'},
+		title: 'Page de Login',
+		headerTintColor: 'black'
 	}
 })
 
