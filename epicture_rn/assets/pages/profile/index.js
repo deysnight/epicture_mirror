@@ -13,7 +13,7 @@ const ProfileTabs = createBottomTabNavigator({
         navigationOptions: {
             title: "Description",
             tabBarIcon: ({tintColor}) => (
-                <IonIcon name="md-paper" color="black" size={24} />
+                <IonIcon name="md-paper" color={tintColor} size={24} />
             )
         }
     },
@@ -22,19 +22,31 @@ const ProfileTabs = createBottomTabNavigator({
         navigationOptions: {
             title: "Trophées",
             tabBarIcon: ({tintColor}) => (
-                <FeatherIcon name="award" color="black" size={24} />
+                <FeatherIcon name="award" color={tintColor} size={24} />
             )
         }
     },
     Profil3: {
         screen: InfosScreen,
         navigationOptions: {
-            title: "Infos",
+            title: "Statistiques",
             tabBarIcon: ({tintColor}) => (
-                <MaterialCommunityIcons name="information-outline" color="black" size={24} />
+                <MaterialCommunityIcons name="information-outline" color={tintColor} size={24} />
             )
         }
     }
-});
+}, {
+   order: ['DescriptionScreen', 'TropheeScreen', 'InfosScreen'],
+   navigationOptions: {
+       tabBarVisible: true
+   },
+   tabBarOptions: {
+       activeTintColor: '#336B87',
+       inactiveTintColor: 'grey'
+   }
+}
+);
+
+
 
 export default createStackNavigator({ProfileTabs}, { headerMode: "none"});
