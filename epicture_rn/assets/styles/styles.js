@@ -43,6 +43,14 @@ export default {
   },
   drawerPseudo: {
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
+  },
+  profilePseudo: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginTop: 20,
+    color: 'black',
+    textAlign: 'center'
   }
 };

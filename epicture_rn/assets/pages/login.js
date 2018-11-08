@@ -1,6 +1,4 @@
 import styles from '../styles/styles';
-import HomeScreen from "./homescreen";
-import API from "./api";
 import React from 'react';
 import {Image, StyleSheet, Text, View, Button } from 'react-native';
 import {AuthSession} from 'expo';
@@ -19,7 +17,7 @@ class Login extends React.Component {
     return (
       <View style={styles.loginstyles}>
         <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}}
-        style={{width: 140, height: 140, borderRadius: 100}} />
+        style={{width: 170, height: 170, borderRadius: 100}} />
         <AwesomeButtonBlue backgroundColor="#90AFC5" backgroundDarker="#336B87"
         borderRadius={30}
         onPress={this._handlePressAsync}> 
