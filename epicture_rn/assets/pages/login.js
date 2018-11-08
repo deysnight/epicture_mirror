@@ -1,5 +1,6 @@
 import styles from '../styles/styles';
 import HomeScreen from "./homescreen";
+import API from "./api";
 import React from 'react';
 import {Image, StyleSheet, Text, View, Button } from 'react-native';
 import {AuthSession} from 'expo';
@@ -47,7 +48,7 @@ class Login extends React.Component {
 	
 	
 	
-    await fetch('https://api.imgur.com/3/account/me/', {
+    /*await fetch('https://api.imgur.com/3/account/me/', {
          method: 'GET',
 		 headers: {
 			'Accept': 'application/json',
@@ -61,21 +62,9 @@ class Login extends React.Component {
       })
       .catch((error) => {
          console.error(error);
-      });
-   
-	
-
-	
-	
-	/*const json = await fetch('https://api.imgur.com/3/account/me/settings', {
-         method: 'GET',
-		 headers: {
-			'Accept': 'application/json',
-			'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
-		}
-      }).then(response => response.json());
-	console.log(json);*/
-	
+      });*/
+	  
+	  API.get_account_pic()
 	
 	
     this.props.navigation.navigate('drawerStack');
