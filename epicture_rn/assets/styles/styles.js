@@ -56,9 +56,7 @@ export default {
   containerUploadPic: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20
-  },
-  uploadPic: {
+    marginTop: 20,
     borderRadius: 5
-  }
+  },
 };

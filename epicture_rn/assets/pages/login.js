@@ -61,9 +61,7 @@ class Login extends React.Component {
       .catch((error) => {
          console.error(error);
       });*/
-	  
-	  API.get_account_pic()
-	
+		
 	
     this.props.navigation.navigate('drawerStack');
 	

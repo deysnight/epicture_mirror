@@ -1,7 +1,7 @@
 import styles from '../styles/styles';
 import Greeting from '../utils/Greeting';
 import React from 'react';
-import {TextInput, Image, Text, View, Button } from 'react-native';
+import {TextInput, Image, Text, View, Button, TouchableOpacity } from 'react-native';
 import {
   createStackNavigator,
   DrawerNavigator,
@@ -46,16 +46,30 @@ class UploadScreen extends React.Component {
    render() {
      const { values: { Title, pictureUrl, Description }} = this.state;
     return (
-      <View>
-        <TextInput value={Title}  onChangeText={this.onChangeText} />
-        <TextInput value={Description} onChangeText={this.onChangeText} />
-        <Button title="Choisir une image" onPress={this.pickImage} />
+      <View style={{height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+      <View style={{marginTop: 20}}>
+        <Text style={{textAlign:'center', fontSize: 28, fontWeight: 'bold'}}>Upload</Text>
+      </View>
+        <View>
         {pictureUrl ? (
           <View style={styles.containerUploadPic}>
-          <Image style={styles.UploadPic} source={{ uri: pictureUrl }} style={{ width: 260, height: 260 }} /> 
+          <TouchableOpacity style={{ borderColor: 'grey', borderStyle: "dashed", borderWidth: 1, borderRadius: 5, width: 250, height: 250 }} onPress={this.pickImage}>
+            <Image style={styles.UploadPic} source={{ uri: pictureUrl }} style={{ width: 250, height: 250 }} onPress={this.pickImage} /> 
+          </TouchableOpacity>
           </View>
-          ) : null}
-        <Button title="Upload" />
+          ) 
+          : 
+          <View style={styles.containerUploadPic}>
+          <TouchableOpacity style={{ borderColor: 'grey', borderStyle: "dashed", borderWidth: 1, borderRadius: 5, width: 250, height: 250 }} onPress={this.pickImage}>
+            <View /> 
+          </TouchableOpacity>
+            <Text>Taille Max: 20MB</Text>
+          </View>
+          }
+        </View>
+        <View style={{paddingTop: 15, paddingBottom: 15, display: 'flex', flexDirection: 'row', justifyContent: 'space-around', backgroundColor: 'white', borderTopColor: 'grey', borderTopWidth: 1}}>
+          <Button title="Upload" />
+        </View>
       </View>
     );
   }

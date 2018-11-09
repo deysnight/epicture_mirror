@@ -36,7 +36,7 @@ const ProfileTabs = createBottomTabNavigator({
         }
     }
 }, {
-   order: ['DescriptionScreen', 'TropheeScreen', 'InfosScreen'],
+   order: ['Profil1', 'Profil2', 'Profil3'],
    navigationOptions: {
        tabBarVisible: true
    },

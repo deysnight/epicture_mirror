@@ -4,7 +4,6 @@ import Greeting from '../utils/Greeting';
 import React from 'react';
 import {Alert, StyleSheet, Text, View, Button } from 'react-native';
 import SyncStorage from 'sync-storage';
-import API from './api';
 
 
 class HomeScreen extends React.Component {
@@ -15,7 +14,6 @@ class HomeScreen extends React.Component {
 			<Greeting style={[styles.red, styles.bigblue]} name='Rexxar' />
 		</View>
         <View style={[{flex: 2, backgroundColor: 'skyblue'}, styles.view]}>
-			<Greeting style={[styles.red, styles.bigblue]} name={ API.functionTwo("https://api.imgur.com/3/account/me/") } /> 
 			<Greeting style={[styles.bigblue, styles.red]} name={ "lol" } />
 		</View>
         <View style={[{flex: 3, backgroundColor: 'steelblue'}, styles.view]}>
