@@ -1,7 +1,7 @@
 import styles from '../styles/styles';
 import Greeting from '../utils/Greeting';
 import React from 'react';
-import {TextInput, Image, Text, View, TouchableOpacity } from 'react-native';
+import {Alert, TextInput, Image, Text, View, TouchableOpacity } from 'react-native';
 import {
   createStackNavigator,
   DrawerNavigator,
@@ -15,8 +15,8 @@ import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blu
 const defaultState = {
   values: {
     pictureUrl: '',
-    height: 0,
-    width: 0,
+    Title: 'Titre',
+    Desc: 'Description'
   },
   errors: {},
   isSubmitting: false,
@@ -35,9 +35,21 @@ class UploadScreen extends React.Component {
     }));
   };
 
+  deleteImageConfirm = () => {
+    Alert.alert(
+      'Êtes-vous sûr ?',
+      'Vos changements ne seront pas sauvegardés',
+      [
+        {text: 'Annuler', style: 'cancel'},
+        {text: 'Valider', onPress: this.deleteImage},
+      ],
+      { cancelable: false }
+    )
+  };
+
   deleteImage = () => {
     this.onChangeText('pictureUrl', '');
-  }
+  };
 
   pickImage = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -45,17 +57,20 @@ class UploadScreen extends React.Component {
       base64: true
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       this.onChangeText('pictureUrl', result.uri);
-      this.onChangeText('height', result.height);
-      this.onChangeText('width', result.width);
+      this.onChangeText('Title', 'Titre');
+      this.onChangeText('Desc', 'Description');
+      this.setState({Title: 'Titre'})
+      this.setState({Desc: 'Description'})
     }
   };
 
+  //TITLE = this.state.title
+  //DESC = this.state.desc
+
    render() {
-     const { values: { pictureUrl, height, width }} = this.state;
+     const { values: { pictureUrl, Title, Desc }} = this.state;
     return (
       <View style={{height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
       <View style={{marginTop: 20}}>
@@ -65,8 +80,10 @@ class UploadScreen extends React.Component {
         {pictureUrl ? (
           <View style={styles.containerUploadPic}>
             <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-              <TextInput underlineColorAndroid="#FFF" style={styles.InputUpload} placeholder='Titre' />
-              <TextInput underlineColorAndroid="#FFF" style={styles.InputUpload} placeholder='Description' />
+              <TextInput name="title" defaultValue={Title} onChangeText={text => this.setState({Title: text})} underlineColorAndroid="#FFF" style={styles.InputUpload} placeholder='Titre' />
+              <TextInput name="desc" defaultValue={Desc} onChangeText={text => this.setState({Desc: text})} underlineColorAndroid="#FFF" style={styles.InputUpload} placeholder='Description' />
+              <Text>{'user input: ' + this.state.Title}</Text>
+              <Text>{'user input: ' + this.state.Desc}</Text>
             </View>
               <TouchableOpacity style={{width: 250, height: 250}} onPress={this.pickImage}>
               <Image style={styles.UploadPic} source={{ uri: pictureUrl }} resizeMode="contain" style={{width: 250, height: 250}} onPress={this.pickImage} /> 
@@ -87,7 +104,7 @@ class UploadScreen extends React.Component {
         <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
           <AwesomeButtonBlue style={{marginRight: 15}} height={40} width={100} backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
             borderRadius={30}
-            onPress={this.deleteImage}> 
+            onPress={this.deleteImageConfirm}> 
             <Text style={{color: "white", fontWeight: "bold", fontSize: 16}}>Supprimer</Text>
           </AwesomeButtonBlue>
           <AwesomeButtonBlue style={{marginRight: 15}} height={40} width={100} backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
