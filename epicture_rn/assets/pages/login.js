@@ -18,7 +18,7 @@ class Login extends React.Component {
       <View style={styles.loginstyles}>
         <Image source={{uri: 'https://facebook.github.io/react/logo-og.png'}}
         style={{width: 170, height: 170, borderRadius: 100}} />
-        <AwesomeButtonBlue backgroundColor="#90AFC5" backgroundDarker="#336B87"
+        <AwesomeButtonBlue backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
         borderRadius={30}
         onPress={this._handlePressAsync}> 
         <IonIcon name="ios-arrow-forward" color="white" size={15} />

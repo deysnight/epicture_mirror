@@ -7,7 +7,7 @@ import {
   DrawerNavigator,
 } from 'react-navigation';
 
-import { SearchBar, Divider } from 'react-native-elements'
+import { SearchBar } from 'react-native-elements'
 
 class SearchScreen extends React.Component {   
    render() {
@@ -17,8 +17,11 @@ class SearchScreen extends React.Component {
             round
             clearIcon={{ color: 'black' }}
             containerStyle={{backgroundColor: "white"}}
-            inputStyle={{backgroundColor:"#f5f5f5", borderWidth: 1, borderColor: "transparent", color: "black"}}
-            searchIcon={{ size: 28 }}
+            inputContainerStyle={{backgroundColor:"#f5f5f5"}}
+            inputStyle={{backgroundColor:"#f5f5f5", fontSize: 13, borderWidth: 1, borderColor: "transparent", color: "black"}}
+            searchIcon={{ size: 18 }}
+            leftIconContainerStyle={{backgroundColor:"#f5f5f5"}}
+            rightIconContainerStyle={{backgroundColor:"#f5f5f5"}}
             //onChangeText={someMethod}
             platform="default"
             placeholder='Rechercher' 

@@ -4,7 +4,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import DescriptionScreen from './description/desc';
-import TropheeScreen from './description/trophee';
+import UserImageScreen from './description/my_image';
 import InfosScreen from './description/infos';
  
 const ProfileTabs = createBottomTabNavigator({
@@ -18,11 +18,11 @@ const ProfileTabs = createBottomTabNavigator({
         }
     },
     Profil2: {
-        screen: TropheeScreen,
+        screen: UserImageScreen,
         navigationOptions: {
-            title: "Trophées",
+            title: "Mes images",
             tabBarIcon: ({tintColor}) => (
-                <FeatherIcon name="award" color={tintColor} size={24} />
+                <FeatherIcon name="image" color={tintColor} size={24} />
             )
         }
     },
