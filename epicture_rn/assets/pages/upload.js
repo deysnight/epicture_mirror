@@ -63,11 +63,14 @@ class UploadScreen extends React.Component {
       this.onChangeText('Desc', 'Description');
       this.setState({Title: 'Titre'})
       this.setState({Desc: 'Description'})
+      this.setState({pictureUrl: result.uri})
+      console.log(this.state.Title);
+      console.log(this.state.Desc);
+      console.log(this.state.pictureUrl);
     }
   };
 
-  //TITLE = this.state.title
-  //DESC = this.state.desc
+//TO_SEND =  this.state.title + this.state.desc + pictureUrl
 
    render() {
      const { values: { pictureUrl, Title, Desc }} = this.state;
@@ -82,8 +85,6 @@ class UploadScreen extends React.Component {
             <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
               <TextInput name="title" defaultValue={Title} onChangeText={text => this.setState({Title: text})} underlineColorAndroid="#FFF" style={styles.InputUpload} placeholder='Titre' />
               <TextInput name="desc" defaultValue={Desc} onChangeText={text => this.setState({Desc: text})} underlineColorAndroid="#FFF" style={styles.InputUpload} placeholder='Description' />
-              <Text>{'user input: ' + this.state.Title}</Text>
-              <Text>{'user input: ' + this.state.Desc}</Text>
             </View>
               <TouchableOpacity style={{width: 250, height: 250}} onPress={this.pickImage}>
               <Image style={styles.UploadPic} source={{ uri: pictureUrl }} resizeMode="contain" style={{width: 250, height: 250}} onPress={this.pickImage} /> 
