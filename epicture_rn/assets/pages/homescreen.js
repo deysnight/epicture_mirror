@@ -1,21 +1,21 @@
 import styles from '../styles/styles';
 import Blink from '../utils/Blink';
 import Greeting from '../utils/Greeting';
+import PopulairePic from './populaire_pic';
 import React from 'react';
 import {Alert, StyleSheet, Text, View, Button } from 'react-native';
 import SyncStorage from 'sync-storage';
-import API from './api';
 
 
 class HomeScreen extends React.Component {
    render() {
-    return (
+    /*return (
       <View style={styles.container}>
 		<View style={[{flex: 1, backgroundColor: 'powderblue'}, styles.view]}>
 			<Greeting style={[styles.red, styles.bigblue]} name='Rexxar' />
 		</View>
         <View style={[{flex: 2, backgroundColor: 'skyblue'}, styles.view]}>
-			<Greeting style={[styles.red, styles.bigblue]} name={ API.functionTwo("https://api.imgur.com/3/account/me/") } /> 
+			<Greeting style={[styles.red, styles.bigblue]} name={ "lol" } /> 
 			<Greeting style={[styles.bigblue, styles.red]} name={ "lol" } />
 		</View>
         <View style={[{flex: 3, backgroundColor: 'steelblue'}, styles.view]}>
@@ -32,7 +32,13 @@ class HomeScreen extends React.Component {
         
         
       </View>
-    );
+		);*/
+		
+		return (
+			<View style={styles.container}>        
+        <PopulairePic navigation={this.props.navigation}/>
+      </View>
+		)
   }
 }
 

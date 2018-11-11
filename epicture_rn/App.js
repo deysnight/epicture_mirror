@@ -4,6 +4,7 @@ import UploadScreen from "./assets/pages/upload";
 import HomeScreen from "./assets/pages/homescreen";
 import SearchScreen from "./assets/pages/search";
 import Login from "./assets/pages/login";
+import ImgShower from "./assets/pages/show_img";
 import SyncStorage from 'sync-storage';
 import React from 'react';
 import { TouchableNativeFeedback, ScrollView, Text, View, Image, ImageBackground, TouchableOpacity } from 'react-native';
@@ -84,7 +85,7 @@ const DrawerStack = createDrawerNavigator({
 })
 
 const LoginStack = createStackNavigator({
-	loginScreen: { screen: Login },
+  loginScreen: { screen: Login },
 }, {
 	headerMode: 'float',
 	navigationOptions:  ({navigation}) => ({
@@ -92,12 +93,14 @@ const LoginStack = createStackNavigator({
     headerStyle: {backgroundColor: 'white'},
     headerTintColor: 'black',
     headerTitleStyle: {flex: 1, textAlign: 'center', alignSelf: 'center'},
-    titleStyle: {color: 'red'}
+    titleStyle: {color: 'red'},
   })
-})
+},
+)
 
 const DrawerNavigation = createStackNavigator({
-  DrawerStack: { screen: DrawerStack }
+  DrawerStack: { screen: DrawerStack },
+  testScreen: { screen: ImgShower },
 }, 
 {
   headerMode: 'float',
