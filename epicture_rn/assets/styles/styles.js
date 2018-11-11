@@ -52,5 +52,22 @@ export default {
     marginTop: 20,
     color: 'black',
     textAlign: 'center'
+  },
+  containerUploadPic: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+    borderRadius: 5,
+    marginTop: -20
+  },
+  InputUpload: {
+    backgroundColor: '#fff',
+    padding: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 2,
+    marginBottom: 10,
+    height: 40,
+    width: '80%'
   }
 };

@@ -1,9 +1,9 @@
 import { createStackNavigator } from 'react-navigation';
 import DescriptionScreen from './profile';
-import TropheeScreen from './trophee';
+import UserImageScreen from './my_image';
 import InfosScreen from './infos';
 export default createStackNavigator({
     DescriptionScreen,
-    TropheeScreen,
+    UserImageScreen,
     InfosScreen
 })
