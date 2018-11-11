@@ -46,9 +46,19 @@ export default {
     fontWeight: 'bold',
     color: 'white'
   },
-  profilePseudo: {
-    fontSize: 28,
+  drawerEmail: {
+    fontSize: 14,
     fontWeight: 'bold',
+    color: 'white'
+  },
+  profilePseudoHeader: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: 'black',
+    textAlign: 'center'
+  },
+  profilePseudoDesc: {
+    fontSize: 18,
     marginTop: 20,
     color: 'black',
     textAlign: 'center'

@@ -10,13 +10,12 @@ import {
 class ProfileHeader extends React.Component {
      render() {
       return (
-          <SafeAreaView style={{flex: 1}}>
           <ImageBackground
              source={{uri: SyncStorage.get('img_cover')}}
              resizeMode={'cover'}
              style={{
                flexDirection: 'row',
-               height: 150,
+               height: 180,
                backgroundColor: '#f5f5f5',
                borderBottomColor: 'grey',
                borderBottomWidth: 1,
@@ -25,9 +24,8 @@ class ProfileHeader extends React.Component {
                >
              <Image source={{uri: SyncStorage.get('img_profile')}} // image profile
              style={{width: 80, height: 80, borderRadius: 100}} />
-           </ImageBackground>
-           <Text style={styles.profilePseudo}>{SyncStorage.get('account_username')}</Text>
-       </SafeAreaView>
+            <Text style={styles.profilePseudoHeader}>{SyncStorage.get('account_username')}</Text>
+           </ImageBackground>       
       );
     }
   }
