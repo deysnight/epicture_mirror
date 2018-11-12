@@ -65,17 +65,20 @@ class DescriptionScreen extends React.Component {
     return (
       <SafeAreaView>
         <ProfileHeader></ProfileHeader>
-        <View>
-          <Text>{this.state.username}</Text>
-          <Text>{this.state.description}</Text>
-          <Text>Création: {x}</Text>
+        <View style={styles.profileDescContainer}>
+          <View>
+            <Text style={styles.profileTitle}>Statistiques</Text>
+            <Text style={styles.profileDescUsername}>{this.state.username}</Text>
+            <Text style={styles.profileDescDescription}>{this.state.description}</Text>
+            <Text style={styles.profileDescCreation}>Création: {x}</Text>
+          </View>
         </View>
         <View>
-        <AwesomeButtonBlue height={36} width={90} backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
-          borderRadius={7}> 
-          <Text style={{color: "white", fontWeight: "bold", fontSize: 14}}>Modifier</Text>
-        </AwesomeButtonBlue>
-        </View>
+            <AwesomeButtonBlue height={36} width={90} backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
+              borderRadius={7}> 
+              <Text style={{color: "white", fontWeight: "bold", fontSize: 14}}>Modifier</Text>
+            </AwesomeButtonBlue>
+          </View>
       </SafeAreaView>
     )
   }

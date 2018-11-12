@@ -13,6 +13,16 @@ class Login extends React.Component {
     result: null,
   };
 
+  async removeItemValue(key) {
+    try {
+      await AsyncStorage.removeItem(key);
+      return true;
+    }
+    catch(exception) {
+      return false;
+    }
+  }
+
   render() {
     return (
       <View style={styles.loginstyles}>
@@ -55,7 +65,7 @@ class Login extends React.Component {
       .then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson)
-	    SyncStorage.set('account_username', responseJson.data.url);
+      SyncStorage.set('account_username', responseJson.data.url);
       SyncStorage.set('img_profile', responseJson.data.avatar + "&fidelity=grand");
       SyncStorage.set('img_cover', responseJson.data.cover + "&fidelity=grand");
       SyncStorage.set('creation', responseJson.data.created);

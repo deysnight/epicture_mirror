@@ -79,5 +79,27 @@ export default {
     marginBottom: 10,
     height: 40,
     width: '80%'
+  },
+  profileDescContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: 'red'
+  },
+  profileTitle: {
+    textAlign: 'center',
+    fontSize: 26,
+    marginTop: 20
+  },
+  profileDescUsername: {
+    fontSize: 15,
+    marginTop: 15
+  },
+  profileDescDescription: {
+    fontSize: 15,
+    marginTop: 15
+  },
+  profileDescCreation: {
+    fontSize: 15,
+    marginTop: 15
   }
 };

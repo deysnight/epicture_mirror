@@ -139,6 +139,7 @@ class InfosScreen extends React.Component {
       <SafeAreaView>
       <ProfileHeader></ProfileHeader>
       <View>
+        <Text style={styles.profileTitle}>Statistiques</Text>
         <Text>Reputation: {SyncStorage.get('reputation')}</Text>
         <Text>Images publiées: {this.state.nb_pic}</Text>
         <Text>Albums publiés: {this.state.nb_album}</Text>
