@@ -33,14 +33,11 @@ const HeaderDrawer = (props) => (
           alignItems: 'center',
           justifyContent: 'space-around'}}
           >
-          <View>
-            <TouchableOpacity onPress={() => props.navigation.navigate('Profile')}>
-              <Image source={{uri: SyncStorage.get('img_profile')}}
+          <TouchableOpacity onPress={() => props.navigation.navigate('Profile')}>
+            <Image source={{uri: SyncStorage.get('img_profile')}}
               style={{width: 60, height: 60, borderRadius: 100}} />
-            </TouchableOpacity>
-            <Text numberOfLines={1} style={styles.drawerPseudo}>{SyncStorage.get('account_username')}</Text>
-            <Text numberOfLines={1} style={styles.drawerEmail}>{SyncStorage.get('account_email')}</Text>
-          </View>
+          </TouchableOpacity>
+          <Text numberOfLines={1} style={styles.drawerPseudo}>{SyncStorage.get('account_username')}</Text>
       </ImageBackground>
     <ScrollView style={{backgroundColor: 'white'}}>
       <DrawerItems {...props} />

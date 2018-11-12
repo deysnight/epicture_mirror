@@ -54,7 +54,7 @@ export default {
   profilePseudoHeader: {
     fontSize: 26,
     fontWeight: 'bold',
-    color: 'black',
+    color: 'white',
     textAlign: 'center'
   },
   profilePseudoDesc: {

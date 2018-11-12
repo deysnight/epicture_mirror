@@ -41,7 +41,6 @@ class Login extends React.Component {
     this.setState({ result });
 	
 	SyncStorage.set('access_token', result.params.access_token);
-	SyncStorage.set('account_username', result.params.account_username);
 	//result.type
 	
 	
@@ -56,8 +55,12 @@ class Login extends React.Component {
       .then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson)
-			SyncStorage.set('img_profile', responseJson.data.avatar + "&fidelity=grand");
-			SyncStorage.set('img_cover', responseJson.data.cover + "&fidelity=grand");
+	    SyncStorage.set('account_username', responseJson.data.url);
+      SyncStorage.set('img_profile', responseJson.data.avatar + "&fidelity=grand");
+      SyncStorage.set('img_cover', responseJson.data.cover + "&fidelity=grand");
+      SyncStorage.set('creation', responseJson.data.created);
+      SyncStorage.set('bio', responseJson.data.bio);
+      SyncStorage.set('userid', responseJson.data.id);
       })
       .catch((error) => {
          console.error(error);
