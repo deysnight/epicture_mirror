@@ -13,16 +13,6 @@ class Login extends React.Component {
     result: null,
   };
 
-  async removeItemValue(key) {
-    try {
-      await AsyncStorage.removeItem(key);
-      return true;
-    }
-    catch(exception) {
-      return false;
-    }
-  }
-
   render() {
     return (
       <View style={styles.loginstyles}>
