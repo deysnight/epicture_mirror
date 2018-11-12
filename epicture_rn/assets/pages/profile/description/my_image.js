@@ -13,7 +13,12 @@ import ProfileHeader from '../../../utils/ProfileHeader'
 class UserImageScreen extends React.Component {
   render() {
     return (
+      <SafeAreaView>
       <ProfileHeader></ProfileHeader>
+      <View>
+
+      </View>
+      </SafeAreaView>
     )
   }
 }
