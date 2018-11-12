@@ -139,11 +139,22 @@ class InfosScreen extends React.Component {
       <SafeAreaView>
       <ProfileHeader></ProfileHeader>
       <View>
-        <Text style={styles.profileTitle}>Statistiques</Text>
-        <Text>Reputation: {SyncStorage.get('reputation')}</Text>
-        <Text>Images publiées: {this.state.nb_pic}</Text>
-        <Text>Albums publiés: {this.state.nb_album}</Text>
-        <Text>Commentaires publiés: {this.state.nb_comment}</Text>
+        <Text style={styles.profileDescheaderData}>Réputation</Text>
+        <Text style={styles.profileData}>{SyncStorage.get('reputation')}</Text>
+        <View style={styles.profileDescSeparator}>
+        </View>
+        <Text style={styles.profileDescheaderData}>Images publiées</Text>
+        <Text style={styles.profileData}>{this.state.nb_pic}</Text>
+        <View style={styles.profileDescSeparator}>
+        </View>
+        <Text style={styles.profileDescheaderData}>Albums publiés</Text>
+        <Text style={styles.profileData}>{this.state.nb_album}</Text>
+        <View style={styles.profileDescSeparator}>
+        </View>
+        <Text style={styles.profileDescheaderData}>Commentaires publiés</Text>
+        <Text style={styles.profileData}>{this.state.nb_comment}</Text>
+        <View style={styles.profileDescSeparator}>
+        </View>
       </View>
       </SafeAreaView>
     )

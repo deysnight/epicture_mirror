@@ -63,23 +63,29 @@ class DescriptionScreen extends React.Component {
    render() {
     var x = this.fromEpoch(SyncStorage.get('creation'));
     return (
-      <SafeAreaView>
+      <View>
         <ProfileHeader></ProfileHeader>
         <View style={styles.profileDescContainer}>
-          <View>
-            <Text style={styles.profileTitle}>Statistiques</Text>
-            <Text style={styles.profileDescUsername}>{this.state.username}</Text>
-            <Text style={styles.profileDescDescription}>{this.state.description}</Text>
-            <Text style={styles.profileDescCreation}>Création: {x}</Text>
+          <Text style={styles.profileDescheaderData}>Nom de compte</Text>
+          <Text style={styles.profileData}>{this.state.username}</Text>
+          <View style={styles.profileDescSeparator}>
           </View>
-        </View>
-        <View>
+          <Text style={styles.profileDescheaderData}>Bio</Text>
+          <Text style={styles.profileData}>{this.state.description}</Text>
+          <View style={styles.profileDescSeparator}>
+          </View>
+          <Text style={styles.profileDescheaderData}>Création</Text>
+          <Text style={styles.profileData}>{x}</Text>
+          <View style={styles.profileDescSeparator}>
+          </View>
+          <View style={styles.profileDescButton}>
             <AwesomeButtonBlue height={36} width={90} backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
-              borderRadius={7}> 
-              <Text style={{color: "white", fontWeight: "bold", fontSize: 14}}>Modifier</Text>
+            borderRadius={7}> 
+            <Text style={{color: "white", fontWeight: "bold", fontSize: 14}}>Modifier</Text>
             </AwesomeButtonBlue>
           </View>
-      </SafeAreaView>
+        </View> 
+      </View>
     )
   }
 }

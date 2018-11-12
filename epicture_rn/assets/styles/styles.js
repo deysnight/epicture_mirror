@@ -52,7 +52,7 @@ export default {
     color: 'white'
   },
   profilePseudoHeader: {
-    fontSize: 26,
+    fontSize: 24,
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'center'
@@ -83,23 +83,35 @@ export default {
   profileDescContainer: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'red'
   },
   profileTitle: {
     textAlign: 'center',
     fontSize: 26,
     marginTop: 20
   },
-  profileDescUsername: {
+  profileData: {
     fontSize: 15,
-    marginTop: 15
+    marginLeft: 20
   },
-  profileDescDescription: {
-    fontSize: 15,
-    marginTop: 15
+  profileDescButton: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: '5%'
   },
-  profileDescCreation: {
-    fontSize: 15,
-    marginTop: 15
+  profileDescSeparator: {
+    flex: 1,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
+    marginTop: 6,
+    marginLeft: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '85%'
+  },
+  profileDescheaderData: {
+    color: '#336B87',
+    fontSize: 12,
+    marginTop: 15,
+    marginLeft: 20,
   }
 };
