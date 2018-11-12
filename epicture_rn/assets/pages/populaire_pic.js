@@ -12,8 +12,6 @@ class PopulairePic extends Component {
     this.state = {
       loading: false,
       data: [],
-      page: 1,
-      seed: 1,
       error: null,
       refreshing: false,
     };
