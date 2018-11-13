@@ -48,6 +48,37 @@ class UploadScreen extends React.Component {
     )
   };
 
+  UploadSuccess = () => {
+    Alert.alert(
+      'Succès',
+      'Votre image a été upload avec succès sur Imgur !',
+      [
+        {text: 'Compris', style: 'cancel'}
+      ],
+      { cancelable: false }
+    )
+  };
+  UploatMissingData = () => {
+    Alert.alert(
+      'Erreur',
+      'Vous devez renseigner un titre et une description !',
+      [
+        {text: 'Compris', style: 'cancel'}
+      ],
+      { cancelable: false }
+    )
+  };
+  UploadFail = () => {
+    Alert.alert(
+      'Erreur',
+      'Votre image est trop imposante !',
+      [
+        {text: 'Compris', style: 'cancel'}
+      ],
+      { cancelable: false }
+    )
+  };
+
   deleteImage = () => {
     this.onChangeText('pictureUrl', '');
   };
@@ -98,6 +129,10 @@ makeRemoteRequest = () => {
 };
 
 UploadImage = () => {
+  if (this.state.Title.length === 0 || this.state.Desc.length === 0) {
+    this.UploatMissingData();
+    return;
+  }
   let formdata = new FormData();
   const url = "https://api.imgur.com/3/image"
   formdata.append('image', this.state.pictureUrl);
@@ -115,8 +150,13 @@ UploadImage = () => {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res); 
+      if (res.status !== 200) {
+        this.UploadFail();
+        this.deleteImage();
+        return;
+      }
       this.setState({
+        status: res.status,
         error: res.error || null,
         loading: false,
         refreshing: false
@@ -127,7 +167,8 @@ UploadImage = () => {
     .catch(error => {
       this.setState({ error, loading: false });
     });
-    this.props.navigation.navigate('Images Populaires');
+    this.UploadSuccess();
+    this.props.navigation.navigate('Images Populaires')
 };
    render() {
     const { values: { pictureUrl, Title, Desc }} = this.state;
