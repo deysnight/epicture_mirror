@@ -40,7 +40,8 @@ class Login extends React.Component {
 	
     this.setState({ result });
 	
-	SyncStorage.set('access_token', result.params.access_token);
+  SyncStorage.set('access_token', result.params.access_token);
+  console.log(SyncStorage.get('access_token'));
 	//result.type
 	
 	

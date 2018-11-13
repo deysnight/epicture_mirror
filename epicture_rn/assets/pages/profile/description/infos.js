@@ -44,8 +44,23 @@ class InfosScreen extends React.Component {
       })
     .then(res => res.json())
     .then(res => {
+      if (res.data.reputation_name === "Forever Alone")
+        SyncStorage.set('reputation', "Bâtard");
+      else if (res.data.reputation_name === "Neutral")
+        SyncStorage.set('reputation', "Neutre");
+      else if (res.data.reputation_name === "Accepted")
+        SyncStorage.set('reputation', "Accepté");
+      else if (res.data.reputation_name === "Liked")
+        SyncStorage.set('reputation', "Bien aimé");
+      else if (res.data.reputation_name === "Trusted")
+        SyncStorage.set('reputation', "De Confiance");
+      else if (res.data.reputation_name === "Idolazed")
+        SyncStorage.set('reputation', "Idolâtré");
+      else if (res.data.reputation_name === "Renowned")
+         SyncStorage.set('reputation', "Reconnu");
+      else if (res.data.reputation_name === "Glorious")
+        SyncStorage.set('reputation', "Glorieux");
       SyncStorage.set('account_username', res.data.url);
-      SyncStorage.set('reputation', res.data.reputation_name);
       SyncStorage.set('img_profile', res.data.avatar + "&fidelity=grand");
       SyncStorage.set('img_cover', res.data.cover + "&fidelity=grand");
       this.setState({

@@ -22,8 +22,33 @@ class FavoriteScreen extends React.Component {
   }
 
   componentDidMount() {
+    this.makeRemoteRequest();
     this.getFavorite();
   }
+
+  makeRemoteRequest = () => {
+    const url = "https://api.imgur.com/3/account/me/";
+    this.setState({ loading: true });
+    fetch(url, {
+         method: 'GET',
+		 headers: {
+			'Accept': 'application/json',
+			'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
+		}
+      })
+      .then(res => res.json())
+      .then(res => {
+        SyncStorage.set('account_username', res.data.url);
+        this.setState({
+          error: res.error || null,
+          loading: false,
+          refreshing: false
+        });
+      })
+      .catch(error => {
+        this.setState({ error, loading: false });
+      });
+  };
 
   getFavorite = () => {
     const url = "https://api.imgur.com/3/account/" + SyncStorage.get('account_username') + "/favorites/"
