@@ -62,15 +62,16 @@ class DescriptionScreen extends React.Component {
   };
    render() {
     var x = this.fromEpoch(SyncStorage.get('creation'));
+    const { navigate } = this.props.navigation;
     return (
       <View>
         <ProfileHeader></ProfileHeader>
         <View style={styles.profileDescContainer}>
-          <Text style={styles.profileDescheaderData}>Nom de compte</Text>
+        <Text style={styles.profileDescheaderData}>Nom de compte</Text>
           <Text style={styles.profileData}>{this.state.username}</Text>
           <View style={styles.profileDescSeparator}>
           </View>
-          <Text style={styles.profileDescheaderData}>Bio</Text>
+          <Text style={styles.profileDescheaderData}>Biographie</Text>
           <Text style={styles.profileData}>{this.state.description}</Text>
           <View style={styles.profileDescSeparator}>
           </View>
@@ -80,7 +81,9 @@ class DescriptionScreen extends React.Component {
           </View>
           <View style={styles.profileDescButton}>
             <AwesomeButtonBlue height={36} width={90} backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
-            borderRadius={7}> 
+            borderRadius={7}
+            onPress={() => navigate('updateProfileScreen')}
+            > 
             <Text style={{color: "white", fontWeight: "bold", fontSize: 14}}>Modifier</Text>
             </AwesomeButtonBlue>
           </View>

@@ -1,5 +1,4 @@
 import styles from '../styles/styles';
-import Greeting from '../utils/Greeting';
 import React from 'react';
 import {Alert, TextInput, Image, Text, View, TouchableOpacity } from 'react-native';
 import {
@@ -8,9 +7,7 @@ import {
 } from 'react-navigation';
 
 import { ImagePicker } from 'expo';
-import { Input, Button } from 'react-native-elements';
 import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';
-
 
 const defaultState = {
   values: {
@@ -61,19 +58,16 @@ class UploadScreen extends React.Component {
       this.onChangeText('pictureUrl', result.uri);
       this.onChangeText('Title', 'Titre');
       this.onChangeText('Desc', 'Description');
-      this.setState({Title: 'Titre'})
-      this.setState({Desc: 'Description'})
-      this.setState({pictureUrl: result.uri})
-      console.log(this.state.Title);
-      console.log(this.state.Desc);
-      console.log(this.state.pictureUrl);
+      this.setState({Title: 'Titre'});
+      this.setState({Desc: 'Description'});
+      this.setState({pictureUrl: result.uri});
     }
   };
 
 //TO_SEND =  this.state.title + this.state.desc + pictureUrl
 
    render() {
-     const { values: { pictureUrl, Title, Desc }} = this.state;
+    const { values: { pictureUrl, Title, Desc }} = this.state;
     return (
       <View style={{height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
       <View style={{marginTop: 20}}>

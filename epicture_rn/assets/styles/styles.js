@@ -84,6 +84,7 @@ export default {
     flex: 1,
     flexDirection: 'column',
   },
+
   profileTitle: {
     textAlign: 'center',
     fontSize: 26,
@@ -113,5 +114,24 @@ export default {
     fontSize: 12,
     marginTop: 15,
     marginLeft: 20,
-  }
+  },
+  ProfileDescUpdateInput: {
+    backgroundColor: '#fff',
+    padding: 2,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 2,
+    marginBottom: 10,
+    marginLeft: 20,
+    height: 40,
+    width: '80%',
+    fontSize: 15,
+  },
+  profileDescUpdateheaderData: {
+    color: '#336B87',
+    fontSize: 12,
+    marginTop: 15,
+    marginBottom: 10,
+    marginLeft: 20
+  },
 };
