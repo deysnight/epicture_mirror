@@ -27,6 +27,30 @@ class UserImageScreen extends React.Component {
     this.getMyImage();
   }
 
+  deleteImage  = () => {
+    const url = "https://api.imgur.com/3/image/HQa09cc"; //HQa09cc = ID de l'image
+    this.setState({ loading: true });
+    fetch(url, {
+         method: 'DEL',
+		 headers: {
+			'Accept': 'application/json',
+			'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
+		}
+      })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+        this.setState({
+          error: res.error || null,
+          loading: false,
+          refreshing: false
+        });
+      })
+      .catch(error => {
+        this.setState({ error, loading: false });
+      });
+  };
+
   makeRemoteRequest = () => {
     const url = "https://api.imgur.com/3/account/me/";
     this.setState({ loading: true });
