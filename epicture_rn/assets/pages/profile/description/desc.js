@@ -33,6 +33,30 @@ class DescriptionScreen extends React.Component {
     var after = moment(new Date(before * 1000)).format('D MMMM YYYY');
     return (after);
   }
+  favoriteImage  = () => {
+    const url = "https://api.imgur.com/3/image/HQa09cc/favorite"; //HQa09cc = ID de l'image
+    this.setState({ loading: true });
+    fetch(url, {
+         method: 'POST',
+		 headers: {
+			'Accept': 'application/json',
+			'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
+		}
+      })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+        this.setState({
+          error: res.error || null,
+          loading: false,
+          refreshing: false
+        });
+      })
+      .catch(error => {
+        this.setState({ error, loading: false });
+      });
+  };
+
   makeRemoteRequest = () => {
     const url = "https://api.imgur.com/3/account/me/";
     this.setState({ loading: true });
@@ -62,21 +86,33 @@ class DescriptionScreen extends React.Component {
   };
    render() {
     var x = this.fromEpoch(SyncStorage.get('creation'));
+    const { navigate } = this.props.navigation;
     return (
-      <SafeAreaView>
+      <View>
         <ProfileHeader></ProfileHeader>
-        <View>
-          <Text>{this.state.username}</Text>
-          <Text>{this.state.description}</Text>
-          <Text>Création: {x}</Text>
-        </View>
-        <View>
-        <AwesomeButtonBlue height={36} width={90} backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
-          borderRadius={7}> 
-          <Text style={{color: "white", fontWeight: "bold", fontSize: 14}}>Modifier</Text>
-        </AwesomeButtonBlue>
-        </View>
-      </SafeAreaView>
+        <View style={styles.profileDescContainer}>
+        <Text style={styles.profileDescheaderData}>Nom de compte</Text>
+          <Text style={styles.profileData}>{this.state.username}</Text>
+          <View style={styles.profileDescSeparator}>
+          </View>
+          <Text style={styles.profileDescheaderData}>Biographie</Text>
+          <Text style={styles.profileData}>{this.state.description}</Text>
+          <View style={styles.profileDescSeparator}>
+          </View>
+          <Text style={styles.profileDescheaderData}>Création</Text>
+          <Text style={styles.profileData}>{x}</Text>
+          <View style={styles.profileDescSeparator}>
+          </View>
+          <View style={styles.profileDescButton}>
+            <AwesomeButtonBlue height={36} width={90} backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
+            borderRadius={7}
+            onPress={() => navigate('updateProfileScreen')}
+            > 
+            <Text style={{color: "white", fontWeight: "bold", fontSize: 14}}>Modifier</Text>
+            </AwesomeButtonBlue>
+          </View>
+        </View> 
+      </View>
     )
   }
 }

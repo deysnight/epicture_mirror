@@ -1,15 +1,16 @@
 import styles from '../styles/styles';
-import Greeting from '../utils/Greeting';
 import React from 'react';
 import {Alert, TextInput, Image, Text, View, TouchableOpacity } from 'react-native';
 import {
   createStackNavigator,
   DrawerNavigator,
 } from 'react-navigation';
+import SyncStorage from 'sync-storage';
+
 
 import { ImagePicker } from 'expo';
-import { Input, Button } from 'react-native-elements';
 import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';
+import ImgToBase64 from 'react-native-image-base64';
 
 
 const defaultState = {
@@ -47,6 +48,37 @@ class UploadScreen extends React.Component {
     )
   };
 
+  UploadSuccess = () => {
+    Alert.alert(
+      'Succès',
+      'Votre image a été upload avec succès sur Imgur !',
+      [
+        {text: 'Compris', style: 'cancel'}
+      ],
+      { cancelable: false }
+    )
+  };
+  UploatMissingData = () => {
+    Alert.alert(
+      'Erreur',
+      'Vous devez renseigner un titre et une description !',
+      [
+        {text: 'Compris', style: 'cancel'}
+      ],
+      { cancelable: false }
+    )
+  };
+  UploadFail = () => {
+    Alert.alert(
+      'Erreur',
+      'Votre image est trop imposante !',
+      [
+        {text: 'Compris', style: 'cancel'}
+      ],
+      { cancelable: false }
+    )
+  };
+
   deleteImage = () => {
     this.onChangeText('pictureUrl', '');
   };
@@ -61,19 +93,85 @@ class UploadScreen extends React.Component {
       this.onChangeText('pictureUrl', result.uri);
       this.onChangeText('Title', 'Titre');
       this.onChangeText('Desc', 'Description');
-      this.setState({Title: 'Titre'})
-      this.setState({Desc: 'Description'})
-      this.setState({pictureUrl: result.uri})
-      console.log(this.state.Title);
-      console.log(this.state.Desc);
-      console.log(this.state.pictureUrl);
+      this.setState({Title: 'Titre'});
+      this.setState({Desc: 'Description'});
+      this.setState({pictureUrl: result.base64});
     }
   };
 
 //TO_SEND =  this.state.title + this.state.desc + pictureUrl
+componentDidMount() {
+  this.makeRemoteRequest();
+}
 
+makeRemoteRequest = () => {
+  const url = "https://api.imgur.com/3/account/me/";
+  this.setState({ loading: true });
+  fetch(url, {
+       method: 'GET',
+   headers: {
+    'Accept': 'application/json',
+    'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
+  }
+    })
+    .then(res => res.json())
+    .then(res => {
+      SyncStorage.set('account_username', res.data.url);
+      this.setState({
+        error: res.error || null,
+        loading: false,
+        refreshing: false
+      });
+    })
+    .catch(error => {
+      this.setState({ error, loading: false });
+    });
+};
+
+UploadImage = () => {
+  if (this.state.Title.length === 0 || this.state.Desc.length === 0) {
+    this.UploatMissingData();
+    return;
+  }
+  let formdata = new FormData();
+  const url = "https://api.imgur.com/3/image"
+  formdata.append('image', this.state.pictureUrl);
+  formdata.append('title', this.state.Title);
+  formdata.append('name', this.state.Title);
+  formdata.append('description', this.state.Desc);
+  this.setState({ loading: true });
+  fetch(url, {
+       method: 'POST',
+   headers: {
+    'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
+    'Content-Type': 'multipart/form-data'
+  },
+  body: formdata
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.status !== 200) {
+        this.UploadFail();
+        this.deleteImage();
+        return;
+      }
+      this.setState({
+        status: res.status,
+        error: res.error || null,
+        loading: false,
+        refreshing: false
+      });
+
+
+    })
+    .catch(error => {
+      this.setState({ error, loading: false });
+    });
+    this.UploadSuccess();
+    this.props.navigation.navigate('Images Populaires')
+};
    render() {
-     const { values: { pictureUrl, Title, Desc }} = this.state;
+    const { values: { pictureUrl, Title, Desc }} = this.state;
     return (
       <View style={{height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
       <View style={{marginTop: 20}}>
@@ -109,7 +207,8 @@ class UploadScreen extends React.Component {
             <Text style={{color: "white", fontWeight: "bold", fontSize: 16}}>Supprimer</Text>
           </AwesomeButtonBlue>
           <AwesomeButtonBlue style={{marginRight: 15}} height={40} width={100} backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
-            borderRadius={30}> 
+            borderRadius={30}
+            onPress={this.UploadImage}> 
             <Text style={{color: "white", fontWeight: "bold", fontSize: 16}}>Upload</Text>
           </AwesomeButtonBlue>
         </View>

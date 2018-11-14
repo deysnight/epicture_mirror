@@ -14,8 +14,8 @@ class ProfileHeader extends React.Component {
              source={{uri: SyncStorage.get('img_cover')}}
              resizeMode={'cover'}
              style={{
-               flexDirection: 'row',
-               height: 180,
+               flexDirection: 'column',
+               height: 200,
                backgroundColor: '#f5f5f5',
                borderBottomColor: 'grey',
                borderBottomWidth: 1,
@@ -23,7 +23,7 @@ class ProfileHeader extends React.Component {
                justifyContent: 'space-around'}}
                >
              <Image source={{uri: SyncStorage.get('img_profile')}} // image profile
-             style={{width: 80, height: 80, borderRadius: 100}} />
+             style={{width: 100, height: 100, borderRadius: 100}} />
             <Text style={styles.profilePseudoHeader}>{SyncStorage.get('account_username')}</Text>
            </ImageBackground>       
       );

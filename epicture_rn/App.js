@@ -5,6 +5,7 @@ import HomeScreen from "./assets/pages/homescreen";
 import SearchScreen from "./assets/pages/search";
 import Login from "./assets/pages/login";
 import ImgShower from "./assets/pages/show_img";
+import updateProfileScreen from "./assets/pages/updateprofilescreen"
 import SyncStorage from 'sync-storage';
 import React from 'react';
 import { TouchableNativeFeedback, ScrollView, Text, View, Image, ImageBackground, TouchableOpacity } from 'react-native';
@@ -101,6 +102,7 @@ const LoginStack = createStackNavigator({
 const DrawerNavigation = createStackNavigator({
   DrawerStack: { screen: DrawerStack },
   testScreen: { screen: ImgShower },
+  updateProfileScreen: { screen: updateProfileScreen }
 }, 
 {
   headerMode: 'float',

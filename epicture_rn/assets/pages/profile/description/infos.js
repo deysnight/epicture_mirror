@@ -44,8 +44,23 @@ class InfosScreen extends React.Component {
       })
     .then(res => res.json())
     .then(res => {
+      if (res.data.reputation_name === "Forever Alone")
+        SyncStorage.set('reputation', "Bâtard");
+      else if (res.data.reputation_name === "Neutral")
+        SyncStorage.set('reputation', "Neutre");
+      else if (res.data.reputation_name === "Accepted")
+        SyncStorage.set('reputation', "Accepté");
+      else if (res.data.reputation_name === "Liked")
+        SyncStorage.set('reputation', "Bien aimé");
+      else if (res.data.reputation_name === "Trusted")
+        SyncStorage.set('reputation', "De Confiance");
+      else if (res.data.reputation_name === "Idolazed")
+        SyncStorage.set('reputation', "Idolâtré");
+      else if (res.data.reputation_name === "Renowned")
+         SyncStorage.set('reputation', "Reconnu");
+      else if (res.data.reputation_name === "Glorious")
+        SyncStorage.set('reputation', "Glorieux");
       SyncStorage.set('account_username', res.data.url);
-      SyncStorage.set('reputation', res.data.reputation_name);
       SyncStorage.set('img_profile', res.data.avatar + "&fidelity=grand");
       SyncStorage.set('img_cover', res.data.cover + "&fidelity=grand");
       this.setState({
@@ -139,10 +154,22 @@ class InfosScreen extends React.Component {
       <SafeAreaView>
       <ProfileHeader></ProfileHeader>
       <View>
-        <Text>Reputation: {SyncStorage.get('reputation')}</Text>
-        <Text>Images publiées: {this.state.nb_pic}</Text>
-        <Text>Albums publiés: {this.state.nb_album}</Text>
-        <Text>Commentaires publiés: {this.state.nb_comment}</Text>
+        <Text style={styles.profileDescheaderData}>Réputation</Text>
+        <Text style={styles.profileData}>{SyncStorage.get('reputation')}</Text>
+        <View style={styles.profileDescSeparator}>
+        </View>
+        <Text style={styles.profileDescheaderData}>Images publiées</Text>
+        <Text style={styles.profileData}>{this.state.nb_pic}</Text>
+        <View style={styles.profileDescSeparator}>
+        </View>
+        <Text style={styles.profileDescheaderData}>Albums publiés</Text>
+        <Text style={styles.profileData}>{this.state.nb_album}</Text>
+        <View style={styles.profileDescSeparator}>
+        </View>
+        <Text style={styles.profileDescheaderData}>Commentaires publiés</Text>
+        <Text style={styles.profileData}>{this.state.nb_comment}</Text>
+        <View style={styles.profileDescSeparator}>
+        </View>
       </View>
       </SafeAreaView>
     )
