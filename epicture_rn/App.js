@@ -46,7 +46,7 @@ const HeaderDrawer = (props) => (
 );
 
 const DrawerStack = createDrawerNavigator({
-  "Images Populaires": { screen: HomeScreen,
+  "Images Populaires": { screen: (props) => <HomeScreen {...props} img_mode={"myhome"} />, //HomeScreen,
     navigationOptions: {
       title: "Images Populaires",
       drawerLabel: "Image Populaires",
@@ -59,7 +59,7 @@ const DrawerStack = createDrawerNavigator({
       drawerIcon: ({tintColor}) => (<IonIcon style={{color:tintColor}} name="ios-search" color="black" size={24} />)
     }
    },
-  "Mes favoris": { screen: FavorisScreen,
+  "Mes favoris": { screen: (props) => <HomeScreen {...props} img_mode={"myfav"} /> ,//FavorisScreen,
     navigationOptions: {
       title: "Mes favoris",
       drawerIcon: ({tintColor}) => (<FontAwesomeIcon style={{color:tintColor}} name="heart-o" color="black" size={24} />)
@@ -133,7 +133,7 @@ const RootStack = createStackNavigator({
 }, {
 	headerMode: 'none',
 	title: 'Main',
-	initialRouteName: 'loginStack'  //'loginStack' a remettre quand le login sera fait
+	initialRouteName: 'loginStack'
 })
 
 export default class App extends React.Component {

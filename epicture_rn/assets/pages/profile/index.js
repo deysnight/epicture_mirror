@@ -6,6 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import DescriptionScreen from './description/desc';
 import UserImageScreen from './description/my_image';
 import InfosScreen from './description/infos';
+import HomeScreen from "../homescreen";
  
 const ProfileTabs = createBottomTabNavigator({
     Profil1: {
@@ -18,7 +19,7 @@ const ProfileTabs = createBottomTabNavigator({
         }
     },
     Profil2: {
-        screen: UserImageScreen,
+        screen: (props) => <HomeScreen {...props} img_mode={"myimg"} />,//UserImageScreen,
         navigationOptions: {
             title: "Mes images",
             tabBarIcon: ({tintColor}) => (

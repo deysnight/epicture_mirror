@@ -1,7 +1,5 @@
-import ImgShower from './show_img';
 import React, { Component } from "react";
 import { View, Text, TouchableHighlight , StyleSheet, ImageBackground } from "react-native";
-import { List, ListItem } from "react-native-elements";
 import SyncStorage from 'sync-storage';
 import GridView from 'react-native-super-grid';
 
@@ -23,11 +21,23 @@ class PopulairePic extends Component {
 
   check_link(item) {
     try {
-        if (item.images[0].type == "video/mp4") {
-            link = "http://conceptcradle.com/project1/mvc/img/gif-icon.png"
+        if (item.images[0])
+        {
+            if (item.images[0].type == "video/mp4") {
+                link = "http://conceptcradle.com/project1/mvc/img/gif-icon.png"
+            }
+            else {
+                link = item.images[0].link
+            }
         }
-        else {
-            link = item.images[0].link
+        else
+        {
+            if (item.type == "video/mp4") {
+                link = "http://conceptcradle.com/project1/mvc/img/gif-icon.png"
+            }
+            else {
+                link = item.link
+            }
         }
         return link
       }
@@ -67,15 +77,14 @@ class PopulairePic extends Component {
     return (
       <GridView
         itemDimension={130}
-        items={this.state.data /*items*/}
+        items={this.state.data}
         style={styles.gridView}
         renderItem={item => (
-        <TouchableHighlight onPress={() => navigate('testScreen', {img_data: item})}>
+        <TouchableHighlight onPress={() => navigate('testScreen', {img_data: item, img_mode: this.props.img_mode})}>
           <ImageBackground
             source={{uri: this.check_link(item)}}
-            style={[styles.itemContainer, { backgroundColor: '#bababa'/*item.code*/ }]}
+            style={[styles.itemContainer, { backgroundColor: '#bababa' }]}
           >
-            <Text style={styles.itemName}>{item.title}</Text>
             <Text style={styles.itemCode}>{item.views + "views"}</Text>
           </ImageBackground>
         </TouchableHighlight>
