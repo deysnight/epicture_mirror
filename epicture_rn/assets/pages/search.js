@@ -16,7 +16,7 @@ class SearchScreen extends React.Component {
     this.state = {
       loading: false,
       data: [],
-      ToSearch: 'Cats',
+      ToSearch: '',
       error: null,
       refreshing: false,
     };
@@ -65,7 +65,6 @@ class SearchScreen extends React.Component {
       })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({
           data: res.data,
           error: res.error || null,
@@ -91,8 +90,7 @@ class SearchScreen extends React.Component {
             searchIcon={{ size: 18 }}
             leftIconContainerStyle={{backgroundColor:"#f5f5f5"}}
             rightIconContainerStyle={{backgroundColor:"#f5f5f5"}}
-            onChangeText={(text) => { this.state.ToSearch = text }}
-            onBlur={this.searchImageRequest()}
+            onChangeText={(text) => { this.state.ToSearch = text, this.searchImageRequest()} }
             platform="default"
             placeholder='Rechercher'
         />

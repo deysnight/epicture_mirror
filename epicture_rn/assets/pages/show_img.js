@@ -24,7 +24,7 @@ class ImgShower extends React.Component {
 
     return (
         <View style={ styles.container }>
-            {titre ? (
+            {titre !== "untitled" ? (
                 <Text style={{ marginTop: 10, marginBottom: 10, textAlign: 'center', fontSize: 22 }}>{ titre }</Text>
             ):
                 null

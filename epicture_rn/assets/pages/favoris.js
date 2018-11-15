@@ -103,7 +103,7 @@ class FavoriteScreen extends React.Component {
             source={{uri: this.check_link(item)}}
             style={[styles_grid.itemContainer, { backgroundColor: '#bababa' }]}
           >
-            <Text style={styles_grid.itemCode}>{item.views + "views"}</Text>
+            <Text style={styles_grid.itemCode}>{item.views + " vues"}</Text>
           </ImageBackground>
         </TouchableHighlight>
           
