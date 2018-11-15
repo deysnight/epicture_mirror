@@ -9,6 +9,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "abortcontroller-polyfill": "^1.1.9",
     "expo": "^30.0.1",
     "http-response-object": "^3.0.1",
     "moment": "^2.22.2",

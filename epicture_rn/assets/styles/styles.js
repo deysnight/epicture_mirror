@@ -3,7 +3,7 @@ export default {
     flex: 1,
   },
   view: {
-	justifyContent: 'center',
+	  justifyContent: 'center',
     alignItems: 'center',
   },
   bigblue: {
@@ -14,7 +14,6 @@ export default {
   red: {
     color: 'red',
   },
-  
   buttonContainer: {
     margin: 20
   },

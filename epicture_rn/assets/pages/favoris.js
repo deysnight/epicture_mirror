@@ -21,33 +21,9 @@ class FavoriteScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.makeRemoteRequest();
     this.getFavorite();
   }
 
-  makeRemoteRequest = () => {
-    const url = "https://api.imgur.com/3/account/me/";
-    this.setState({ loading: true });
-    fetch(url, {
-         method: 'GET',
-		 headers: {
-			'Accept': 'application/json',
-			'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
-		}
-      })
-      .then(res => res.json())
-      .then(res => {
-        SyncStorage.set('account_username', res.data.url);
-        this.setState({
-          error: res.error || null,
-          loading: false,
-          refreshing: false
-        });
-      })
-      .catch(error => {
-        this.setState({ error, loading: false });
-      });
-  };
 
   check_link(item) {
     try {
@@ -77,7 +53,8 @@ class FavoriteScreen extends React.Component {
   }
 
   getFavorite = () => {
-    const url = "https://api.imgur.com/3/account/" + SyncStorage.get('account_username') + "/favorites/"
+    const { page, seed } = this.state;
+    const url = "https://api.imgur.com/3/account/" + SyncStorage.get('account_username') + "/favorites/";
     this.setState({ loading: true });
     fetch(url, {
          method: 'GET',
@@ -88,6 +65,7 @@ class FavoriteScreen extends React.Component {
       })
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         this.setState({refreshing: false});
         this.setState({
           data: res.data,
@@ -111,7 +89,11 @@ class FavoriteScreen extends React.Component {
    render() {
     const { navigate } = this.props.navigation;
     return (
-		    <GridView refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh}/>}
+      <View style={{flex: 1}}>
+        <View>
+          <Text style={{textAlign: 'center', marginBottom: 12, marginTop: 12, fontWeight: 'bold', fontSize: 20}}>Mes favoris</Text>
+        </View>
+		    <GridView
         itemDimension={130}
         items={this.state.data}
         style={styles_grid.gridView}
@@ -127,6 +109,7 @@ class FavoriteScreen extends React.Component {
           
         )}
       />
+      </View>
       );
   }
 }

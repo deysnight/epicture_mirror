@@ -168,7 +168,7 @@ UploadImage = () => {
       this.setState({ error, loading: false });
     });
     this.UploadSuccess();
-    this.props.navigation.navigate('Images Populaires')
+    this.props.navigation.navigate('Profile')
 };
    render() {
     const { values: { pictureUrl, Title, Desc }} = this.state;

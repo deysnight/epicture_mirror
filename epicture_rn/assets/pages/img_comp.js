@@ -32,9 +32,9 @@ class ImgComp extends React.Component {
     if (type != "video/mp4") {
       return (
         <View style={ styles.container }>
-          <PinchZoomView>
+          <PinchZoomView style={{ justifyContent: 'center', alignItems: 'center' }}>
             <Image
-              style={{flex: 1, height: undefined, width: undefined}}
+              style={{flex: 1, height: 300, width: 300}}
               source={{uri: link}}
               resizeMode="contain"
             />
@@ -44,13 +44,13 @@ class ImgComp extends React.Component {
     }
     else {
         return (
-            <View style={ styles.container }>
-              <Video
-                source={{ uri: link }}
-                shouldPlay
-                resizeMode="contain"
-                style={{ flex: 1, width: undefined, height: undefined }}
-              />
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Video
+                  source={{ uri: link }}
+                  shouldPlay
+                  resizeMode="contain"
+                  style={{ flex: 1, alignContent: 'center', justifyContent: 'center', width: 300, height: 300 }}
+                />
             </View>
         );
     }

@@ -1,14 +1,12 @@
 import styles from '../../../styles/styles';
 import React from 'react';
-import {StyleSheet, SafeAreaView, Text, View, RefreshControl, ImageBackground, TouchableHighlight } from 'react-native';
+import {StyleSheet, Text, View, RefreshControl, ImageBackground, TouchableHighlight } from 'react-native';
 import SyncStorage from 'sync-storage';
 import GridView from 'react-native-super-grid';
 import {
   createStackNavigator,
   createBottomTabNavigator,
 } from 'react-navigation';
-
-import ProfileHeader from '../../../utils/ProfileHeader'
 
 class UserImageScreen extends React.Component {
   constructor(props) {
@@ -26,30 +24,6 @@ class UserImageScreen extends React.Component {
     this.makeRemoteRequest();
     this.getMyImage();
   }
-
-  deleteImage  = () => {
-    const url = "https://api.imgur.com/3/image/HQa09cc"; //HQa09cc = ID de l'image
-    this.setState({ loading: true });
-    fetch(url, {
-         method: 'DEL',
-		 headers: {
-			'Accept': 'application/json',
-			'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
-		}
-      })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res)
-        this.setState({
-          error: res.error || null,
-          loading: false,
-          refreshing: false
-        });
-      })
-      .catch(error => {
-        this.setState({ error, loading: false });
-      });
-  };
 
   makeRemoteRequest = () => {
     const url = "https://api.imgur.com/3/account/me/";
@@ -125,8 +99,6 @@ class UserImageScreen extends React.Component {
           loading: false,
           refreshing: false
         });
-
-
       })
       .catch(error => {
         this.setState({ error, loading: false });
@@ -141,6 +113,10 @@ class UserImageScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
+      <View style={{flex: 1}}>
+        <View>
+          <Text style={{textAlign: 'center', marginBottom: 12, marginTop: 12, fontWeight: 'bold', fontSize: 20}}>Mes images</Text>
+        </View>
       <GridView refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh}/>}
         itemDimension={130}
         items={this.state.data}
@@ -156,6 +132,7 @@ class UserImageScreen extends React.Component {
         </TouchableHighlight>          
         )}
       />
+      </View>
     )
   }
 }

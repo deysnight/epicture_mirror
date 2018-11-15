@@ -23,24 +23,27 @@ class ImgShower extends React.Component {
         desc = ""
 
     return (
-
         <View style={ styles.container }>
-            <Text>{ titre }</Text>
+            {titre ? (
+                <Text style={{ marginTop: 10, marginBottom: 10, textAlign: 'center', fontSize: 22 }}>{ titre }</Text>
+            ):
+                null
+            }
             <ImgComp img_data={data}/>
             <View style={{padding: 2, display: 'flex', flexDirection: 'column', justifyContent: 'space-around', backgroundColor: 'white', borderTopColor: 'grey', borderTopWidth: 1}}>
-                <Text>{ desc }</Text>
+                {desc ? (
+                    <Text style={{ marginTop: 10, marginBottom: 10, textAlign: 'center' }}>{ desc }</Text>
+                ): null
+                }
             </View>
-            <View style={{padding: 2, display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
-                    <FeatherIcon name="download" color="black" size={24} />
-                    <Text>{ data.ups }</Text>
-                    <FeatherIcon name="download" color="black" size={24} />
-                    <Text>{ data.downs }</Text>
-                    <FeatherIcon name="download" color="black" size={24} />
-                    <Text>{ data.score }</Text>
-                    <FeatherIcon name="download" color="black" size={24} />
-                    <Text>{ data.views }</Text>
-                </View>
-
+            <View style={{paddingTop: 10, paddingBottom: 10, display: 'flex', flexDirection: 'row', justifyContent: 'space-around', backgroundColor: 'white'}}>
+                <FeatherIcon name="chevron-up" color="black" size={24} />
+                <Text style={{ textAlign: 'center' }}>{data.ups}</Text>
+                <FeatherIcon name="chevron-down" color="black" size={24} />
+                <Text>{ data.downs }</Text>
+                <FeatherIcon name="eye" color="black" size={24} />
+                <Text>{ data.views }</Text>
+            </View>
             <ButtonComp img_mode={img_mode} img_data={data}/>
         </View>
     );

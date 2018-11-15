@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { RefreshControl, Text, TouchableHighlight , StyleSheet, ImageBackground } from "react-native";
+import { RefreshControl, Text, TouchableHighlight, View, StyleSheet, ImageBackground } from "react-native";
 import SyncStorage from 'sync-storage';
 import GridView from 'react-native-super-grid';
 
@@ -78,11 +78,13 @@ class PopulairePic extends Component {
     this.setState({refreshing: true});
     this.makeRemoteRequest()
   }
-
-
   render() {
     const { navigate } = this.props.navigation;
     return (
+      <View style={{flex: 1}}>
+        <View>
+          <Text style={{textAlign: 'center', marginBottom: 12, marginTop: 12, fontWeight: 'bold', fontSize: 20}}>Images populaires</Text>
+        </View>
       <GridView refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh}/>}
         itemDimension={130}
         items={this.state.data}
@@ -93,12 +95,13 @@ class PopulairePic extends Component {
             source={{uri: this.check_link(item)}}
             style={[styles.itemContainer, { backgroundColor: '#bababa' }]}
           >
-            <Text style={styles.itemCode}>{item.views + "views"}</Text>
+            <Text style={styles.itemCode}>{item.views + " vues"}</Text>
           </ImageBackground>
         </TouchableHighlight>
           
         )}
       />
+      </View>
     );
   }
 }
