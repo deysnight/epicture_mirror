@@ -1,6 +1,4 @@
 import styles from '../styles/styles';
-import Blink from '../utils/Blink';
-import Greeting from '../utils/Greeting';
 import PopulairePic from './populaire_pic';
 import React from 'react';
 import {Alert, StyleSheet, Text, View, Button } from 'react-native';

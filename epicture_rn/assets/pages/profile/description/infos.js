@@ -1,7 +1,6 @@
 import styles from '../../../styles/styles';
-import Greeting from '../../../utils/Greeting';
 import React from 'react';
-import {Image, SafeAreaView, Text, View, Button, ImageBackground, RefreshControl } from 'react-native';
+import {Image, SafeAreaView, Text, View, ImageBackground } from 'react-native';
 import SyncStorage from 'sync-storage';
 import {
   createStackNavigator,

@@ -6,8 +6,6 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import SyncStorage from 'sync-storage';
 
-import ProfileHeader from './../utils/ProfileHeader'
-
 import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';
 
 class updateProfileScreen extends React.Component {

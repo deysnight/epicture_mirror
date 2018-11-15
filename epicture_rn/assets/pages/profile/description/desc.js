@@ -1,6 +1,6 @@
 import styles from '../../../styles/styles';
 import React from 'react';
-import {Image, SafeAreaView, Text, View, Button, ImageBackground } from 'react-native';
+import {Image, Text, View, Button, ImageBackground } from 'react-native';
 import SyncStorage from 'sync-storage';
 import {
   createStackNavigator,
@@ -33,7 +33,6 @@ class DescriptionScreen extends React.Component {
     var after = moment(new Date(before * 1000)).format('D MMMM YYYY');
     return (after);
   }
-
 
   makeRemoteRequest = () => {
     const url = "https://api.imgur.com/3/account/me/";
@@ -84,8 +83,8 @@ class DescriptionScreen extends React.Component {
           <View style={styles.profileDescButton}>
             <AwesomeButtonBlue height={36} width={90} backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
             borderRadius={7}
-            onPress={() => navigate('updateProfileScreen')}
-            > 
+            onPress={() => this.props.navigation.navigate('updateProfileScreen')}
+            >
             <Text style={{color: "white", fontWeight: "bold", fontSize: 14}}>Modifier</Text>
             </AwesomeButtonBlue>
           </View>

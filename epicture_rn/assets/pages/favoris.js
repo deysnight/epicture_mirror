@@ -1,7 +1,6 @@
 import styles from '../styles/styles';
-import Greeting from '../utils/Greeting';
 import React from 'react';
-import {ImageBackground, RefreshControl, Text, View, TouchableHighlight } from 'react-native';
+import {ImageBackground, RefreshControl, Text, View, TouchableHighlight, StyleSheet } from 'react-native';
 import {
   createStackNavigator,
   DrawerNavigator,
@@ -112,26 +111,47 @@ class FavoriteScreen extends React.Component {
    render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
 		    <GridView refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh}/>}
         itemDimension={130}
         items={this.state.data}
-        style={styles.gridView}
+        style={styles_grid.gridView}
         renderItem={item => (
         <TouchableHighlight onPress={() => navigate('testScreen', {img_data: item, img_mode: "myFav"})}>
           <ImageBackground
             source={{uri: this.check_link(item)}}
-            style={[styles.itemContainer, { backgroundColor: '#bababa' }]}
+            style={[styles_grid.itemContainer, { backgroundColor: '#bababa' }]}
           >
-            <Text style={styles.itemCode}>{item.views + "views"}</Text>
+            <Text style={styles_grid.itemCode}>{item.views + "views"}</Text>
           </ImageBackground>
         </TouchableHighlight>
           
         )}
       />
-      </View>
-    );
+      );
   }
 }
+
+const styles_grid = StyleSheet.create({
+  gridView: {
+    paddingTop: 25,
+    flex: 1,
+  },
+  itemContainer: {
+    justifyContent: 'flex-end',
+    borderRadius: 5,
+    padding: 10,
+    height: 150,
+  },
+  itemName: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: '600',
+  },
+  itemCode: {
+    fontWeight: '600',
+    fontSize: 12,
+    color: '#fff',
+  },
+});
 
 export default FavoriteScreen;

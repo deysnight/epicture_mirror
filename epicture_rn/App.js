@@ -4,6 +4,7 @@ import UploadScreen from "./assets/pages/upload";
 import HomeScreen from "./assets/pages/homescreen";
 import SearchScreen from "./assets/pages/search";
 import Login from "./assets/pages/login";
+import updateProfileScreen from "./assets/pages/updateprofilescreen"
 import ImgShower from "./assets/pages/show_img";
 import SyncStorage from 'sync-storage';
 import React from 'react';
@@ -101,11 +102,13 @@ const LoginStack = createStackNavigator({
 const DrawerNavigation = createStackNavigator({
   DrawerStack: { screen: DrawerStack },
   testScreen: { screen: ImgShower },
+  updateProfileScreen: { screen: updateProfileScreen },
+
 }, 
 {
   headerMode: 'float',
     navigationOptions: ({navigation}) => ({
-    title: "Welcome!",
+    title: "Epicture",
     headerStyle: {backgroundColor: 'white'},
     headerTintColor: 'black',
 	  headerTitleStyle: {flex: 1},

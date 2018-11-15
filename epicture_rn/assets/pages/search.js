@@ -1,7 +1,7 @@
 import styles from '../styles/styles';
-import Greeting from '../utils/Greeting';
 import React from 'react';
 import {Alert, Text, View, Button } from 'react-native';
+import SyncStorage from 'sync-storage';
 import {
   createStackNavigator,
   DrawerNavigator,
@@ -9,11 +9,54 @@ import {
 
 import { SearchBar } from 'react-native-elements'
 
-class SearchScreen extends React.Component {   
+class SearchScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false,
+      data: [],
+      ToSearch: '',
+      error: null,
+      refreshing: false,
+    };
+  }
+
+  componentDidMount() {
+    this.searchImageRequest();
+  }
+
+  searchImageRequest = () => {
+    const url = "https://api.imgur.com/3/gallery/search/time/day/1?q=sharl";// + this.state.ToSearch;
+    this.setState({ loading: true });
+    fetch(url, {
+         method: 'GET',
+     headers: {
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
+    }
+      })
+      .then(res => res.json())
+      .then(res => {
+        SyncStorage.set('account_username', res.data.url);
+        //console.log(this.state.ToSearch)
+        this.setState({
+          data: res.data,
+          error: res.error || null,
+          loading: false,
+          refreshing: false
+        });
+      })
+      .catch(error => {
+        this.setState({ error, loading: false });
+      });
+  };
    render() {
+    var TextSearch = this.state.ToSearch;
     return (
       <View style={styles.container}>
         <SearchBar
+            ref='searchBar'
             round
             clearIcon={{ color: 'black' }}
             containerStyle={{backgroundColor: "white"}}
@@ -22,14 +65,11 @@ class SearchScreen extends React.Component {
             searchIcon={{ size: 18 }}
             leftIconContainerStyle={{backgroundColor:"#f5f5f5"}}
             rightIconContainerStyle={{backgroundColor:"#f5f5f5"}}
-            //onChangeText={someMethod}
+            onChangeText={(text) => { TextSearch = text }}
+            loadingProps={console.log("lol")}
             platform="default"
-            placeholder='Rechercher' 
+            placeholder='Rechercher'
         />
-        <View style={[{flex: 3, backgroundColor: 'skyblue'}, styles.view]}>
-			<Greeting style={[styles.red, styles.bigblue]} name='TEST' />
-			<Greeting style={[styles.bigblue, styles.red]} name='TEST' />
-		</View>        
       </View>
     );
   }

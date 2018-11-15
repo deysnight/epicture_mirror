@@ -25,13 +25,12 @@ class ImgShower extends React.Component {
     return (
 
         <View style={ styles.container }>
+            <Text>{ titre }</Text>
             <ImgComp img_data={data}/>
-
             <View style={{padding: 2, display: 'flex', flexDirection: 'column', justifyContent: 'space-around', backgroundColor: 'white', borderTopColor: 'grey', borderTopWidth: 1}}>
-                <Text>{ "titre: " + titre }</Text>
-                <Text>{ "description: " + desc }</Text>
-
-                <View style={{padding: 2, display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
+                <Text>{ desc }</Text>
+            </View>
+            <View style={{padding: 2, display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
                     <FeatherIcon name="download" color="black" size={24} />
                     <Text>{ data.ups }</Text>
                     <FeatherIcon name="download" color="black" size={24} />
@@ -41,8 +40,6 @@ class ImgShower extends React.Component {
                     <FeatherIcon name="download" color="black" size={24} />
                     <Text>{ data.views }</Text>
                 </View>
-
-            </View>
 
             <ButtonComp img_mode={img_mode} img_data={data}/>
         </View>

@@ -1,7 +1,6 @@
 import styles from '../../../styles/styles';
-import Greeting from '../../../utils/Greeting';
 import React from 'react';
-import {Image, SafeAreaView, Text, View, RefreshControl, ImageBackground, TouchableHighlight } from 'react-native';
+import {StyleSheet, SafeAreaView, Text, View, RefreshControl, ImageBackground, TouchableHighlight } from 'react-native';
 import SyncStorage from 'sync-storage';
 import GridView from 'react-native-super-grid';
 import {
@@ -136,33 +135,52 @@ class UserImageScreen extends React.Component {
 
   _onRefresh = () => {
     this.setState({refreshing: true});
-    this.getFavorite()
+    this.getMyImage();
   }
 
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <SafeAreaView>
-      <ProfileHeader></ProfileHeader>
       <GridView refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh}/>}
         itemDimension={130}
         items={this.state.data}
-        style={styles.gridView}
+        style={styles_grid.gridView}
         renderItem={item => (
         <TouchableHighlight onPress={() => navigate('testScreen', {img_data: item, img_mode: "myimg"})}>
           <ImageBackground
             source={{uri: this.check_link(item)}}
-            style={[styles.itemContainer, { backgroundColor: '#bababa' }]}
+            style={[styles_grid.itemContainer, { backgroundColor: '#bababa' }]}
           >
-            <Text style={styles.itemCode}>{item.views + "views"}</Text>
+            <Text style={styles_grid.itemCode}>{item.views + " vues"}</Text>
           </ImageBackground>
-        </TouchableHighlight>
-          
+        </TouchableHighlight>          
         )}
       />
-      </SafeAreaView>
     )
   }
 }
+
+const styles_grid = StyleSheet.create({
+  gridView: {
+    paddingTop: 25,
+    flex: 1,
+  },
+  itemContainer: {
+    justifyContent: 'flex-end',
+    borderRadius: 5,
+    padding: 10,
+    height: 150,
+  },
+  itemName: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: '600',
+  },
+  itemCode: {
+    fontWeight: '600',
+    fontSize: 12,
+    color: '#fff',
+  },
+});
 
 export default UserImageScreen;
