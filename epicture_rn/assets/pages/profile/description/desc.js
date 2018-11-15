@@ -34,6 +34,7 @@ class DescriptionScreen extends React.Component {
     return (after);
   }
 
+
   makeRemoteRequest = () => {
     const url = "https://api.imgur.com/3/account/me/";
     this.setState({ loading: true });
