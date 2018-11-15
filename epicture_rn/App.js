@@ -5,7 +5,6 @@ import HomeScreen from "./assets/pages/homescreen";
 import SearchScreen from "./assets/pages/search";
 import Login from "./assets/pages/login";
 import ImgShower from "./assets/pages/show_img";
-import updateProfileScreen from "./assets/pages/updateprofilescreen"
 import SyncStorage from 'sync-storage';
 import React from 'react';
 import { TouchableNativeFeedback, ScrollView, Text, View, Image, ImageBackground, TouchableOpacity } from 'react-native';
@@ -47,7 +46,7 @@ const HeaderDrawer = (props) => (
 );
 
 const DrawerStack = createDrawerNavigator({
-  "Images Populaires": { screen: (props) => <HomeScreen {...props} img_mode={"myhome"} />, //HomeScreen,
+  "Images Populaires": { screen: (props) => <HomeScreen {...props} img_mode={"myHome"} />, //HomeScreen,
     navigationOptions: {
       title: "Images Populaires",
       drawerLabel: "Image Populaires",
@@ -60,7 +59,7 @@ const DrawerStack = createDrawerNavigator({
       drawerIcon: ({tintColor}) => (<IonIcon style={{color:tintColor}} name="ios-search" color="black" size={24} />)
     }
    },
-  "Mes favoris": { screen: (props) => <HomeScreen {...props} img_mode={"myfav"} /> ,//FavorisScreen,
+  "Mes favoris": { screen: (props) => <FavorisScreen {...props} img_mode={"myFav"} />,//FavorisScreen,
     navigationOptions: {
       title: "Mes favoris",
       drawerIcon: ({tintColor}) => (<FontAwesomeIcon style={{color:tintColor}} name="heart-o" color="black" size={24} />)
@@ -102,7 +101,6 @@ const LoginStack = createStackNavigator({
 const DrawerNavigation = createStackNavigator({
   DrawerStack: { screen: DrawerStack },
   testScreen: { screen: ImgShower },
-  updateProfileScreen: { screen: updateProfileScreen }
 }, 
 {
   headerMode: 'float',

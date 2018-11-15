@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, TouchableHighlight , StyleSheet, ImageBackground } from "react-native";
+import { RefreshControl, Text, TouchableHighlight , StyleSheet, ImageBackground } from "react-native";
 import SyncStorage from 'sync-storage';
 import GridView from 'react-native-super-grid';
 
@@ -59,6 +59,7 @@ class PopulairePic extends Component {
       })
       .then(res => res.json())
       .then(res => {
+        this.setState({refreshing: false});
         this.setState({
           data: res.data,
           error: res.error || null,
@@ -72,10 +73,17 @@ class PopulairePic extends Component {
         this.setState({ error, loading: false });
       });
   };
+
+  _onRefresh = () => {
+    this.setState({refreshing: true});
+    this.makeRemoteRequest()
+  }
+
+
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <GridView
+      <GridView refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh}/>}
         itemDimension={130}
         items={this.state.data}
         style={styles.gridView}

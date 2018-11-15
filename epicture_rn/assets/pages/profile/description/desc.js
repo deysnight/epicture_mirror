@@ -33,29 +33,6 @@ class DescriptionScreen extends React.Component {
     var after = moment(new Date(before * 1000)).format('D MMMM YYYY');
     return (after);
   }
-  favoriteImage  = () => {
-    const url = "https://api.imgur.com/3/image/HQa09cc/favorite"; //HQa09cc = ID de l'image
-    this.setState({ loading: true });
-    fetch(url, {
-         method: 'POST',
-		 headers: {
-			'Accept': 'application/json',
-			'Authorization': 'Bearer ' + SyncStorage.get('access_token'),
-		}
-      })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res)
-        this.setState({
-          error: res.error || null,
-          loading: false,
-          refreshing: false
-        });
-      })
-      .catch(error => {
-        this.setState({ error, loading: false });
-      });
-  };
 
   makeRemoteRequest = () => {
     const url = "https://api.imgur.com/3/account/me/";

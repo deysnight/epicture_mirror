@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, FlatList, StyleSheet, ImageBackground, Image } from "react-native";
-import { List, ListItem } from "react-native-elements";
 import styles from '../styles/styles';
-import SyncStorage from 'sync-storage';
-import GridView from 'react-native-super-grid';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 import PinchZoomView from 'react-native-pinch-zoom-view';
 import { Video } from 'expo';
 
