@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { View, Text, FlatList, StyleSheet, ImageBackground, Image } from "react-native";
+import React from "react";
+import { View, Image } from "react-native";
 import styles from '../styles/styles';
 import PinchZoomView from 'react-native-pinch-zoom-view';
 import { Video } from 'expo';

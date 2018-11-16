@@ -1,9 +1,7 @@
 import styles from '../styles/styles';
 import PopulairePic from './populaire_pic';
 import React from 'react';
-import {Alert, StyleSheet, Text, View, Button } from 'react-native';
-import SyncStorage from 'sync-storage';
-
+import { View } from 'react-native';
 
 class HomeScreen extends React.Component {
    render() {		

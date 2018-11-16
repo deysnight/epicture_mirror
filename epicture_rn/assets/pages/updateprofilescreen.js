@@ -1,9 +1,6 @@
 import React from 'react';
 import { Alert, Text, TextInput, View } from 'react-native';
 import styles from '../styles/styles';
-import IonIcon from 'react-native-vector-icons/Ionicons';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import FeatherIcon from 'react-native-vector-icons/Feather';
 import SyncStorage from 'sync-storage';
 
 import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';

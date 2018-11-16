@@ -1,14 +1,9 @@
 import styles from '../../../styles/styles';
 import React from 'react';
-import {Image, Text, View, Button, ImageBackground } from 'react-native';
+import { Text, View } from 'react-native';
 import SyncStorage from 'sync-storage';
-import {
-  createStackNavigator,
-  createBottomTabNavigator,
-} from 'react-navigation';
 import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';
 import moment from 'moment';
-
 import ProfileHeader from './../../../utils/ProfileHeader'
 
 class DescriptionScreen extends React.Component {  
@@ -63,7 +58,6 @@ class DescriptionScreen extends React.Component {
   };
    render() {
     var x = this.fromEpoch(SyncStorage.get('creation'));
-    const { navigate } = this.props.navigation;
     return (
       <View>
         <ProfileHeader></ProfileHeader>

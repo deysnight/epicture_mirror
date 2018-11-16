@@ -1,5 +1,6 @@
+import styles from '../styles/styles';
 import React, { Component } from "react";
-import { RefreshControl, Text, TouchableHighlight, View, StyleSheet, ImageBackground } from "react-native";
+import { RefreshControl, Text, TouchableHighlight, View, ImageBackground } from "react-native";
 import SyncStorage from 'sync-storage';
 import GridView from 'react-native-super-grid';
 
@@ -105,29 +106,5 @@ class PopulairePic extends Component {
     );
   }
 }
-
-
-const styles = StyleSheet.create({
-    gridView: {
-      paddingTop: 25,
-      flex: 1,
-    },
-    itemContainer: {
-      justifyContent: 'flex-end',
-      borderRadius: 5,
-      padding: 10,
-      height: 150,
-    },
-    itemName: {
-      fontSize: 16,
-      color: '#fff',
-      fontWeight: '600',
-    },
-    itemCode: {
-      fontWeight: '600',
-      fontSize: 12,
-      color: '#fff',
-    },
-  });
 
 export default PopulairePic;

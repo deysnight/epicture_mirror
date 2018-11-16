@@ -1,11 +1,7 @@
 import styles from '../styles/styles';
 import React from 'react';
-import {TouchableHighlight, Text, View, StyleSheet, ImageBackground } from 'react-native';
+import {TouchableHighlight, Text, View, ImageBackground } from 'react-native';
 import SyncStorage from 'sync-storage';
-import {
-  createStackNavigator,
-  DrawerNavigator,
-} from 'react-navigation';
 import GridView from 'react-native-super-grid';
 import { SearchBar } from 'react-native-elements'
 
@@ -100,14 +96,14 @@ class SearchScreen extends React.Component {
         <GridView
         itemDimension={130}
         items={this.state.data}
-        style={styles_grid.gridView}
+        style={styles.gridView}
         renderItem={item => (
         <TouchableHighlight onPress={() => navigate('testScreen', {img_data: item, img_mode: "fromSearch"})}>
           <ImageBackground
             source={{uri: this.check_link(item)}}
-            style={[styles_grid.itemContainer, { backgroundColor: '#bababa' }]}
+            style={[styles.itemContainer, { backgroundColor: '#bababa' }]}
           >
-            <Text style={styles_grid.itemCode}>{item.views + " vues"}</Text>
+            <Text style={styles.itemCode}>{item.views + " vues"}</Text>
           </ImageBackground>
         </TouchableHighlight>
           
@@ -117,28 +113,5 @@ class SearchScreen extends React.Component {
     );
   }
 }
-
-const styles_grid = StyleSheet.create({
-  gridView: {
-    paddingTop: 25,
-    flex: 1,
-  },
-  itemContainer: {
-    justifyContent: 'flex-end',
-    borderRadius: 5,
-    padding: 10,
-    height: 150,
-  },
-  itemName: {
-    fontSize: 16,
-    color: '#fff',
-    fontWeight: '600',
-  },
-  itemCode: {
-    fontWeight: '600',
-    fontSize: 12,
-    color: '#fff',
-  },
-});
 
 export default SearchScreen;

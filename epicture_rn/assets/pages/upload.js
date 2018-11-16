@@ -1,10 +1,6 @@
 import styles from '../styles/styles';
 import React from 'react';
 import {Alert, TextInput, Image, Text, View, TouchableOpacity } from 'react-native';
-import {
-  createStackNavigator,
-  DrawerNavigator,
-} from 'react-navigation';
 import SyncStorage from 'sync-storage';
 
 

@@ -1,12 +1,8 @@
 import styles from '../../../styles/styles';
 import React from 'react';
-import {StyleSheet, Text, View, RefreshControl, ImageBackground, TouchableHighlight } from 'react-native';
+import { Text, View, RefreshControl, ImageBackground, TouchableHighlight } from 'react-native';
 import SyncStorage from 'sync-storage';
 import GridView from 'react-native-super-grid';
-import {
-  createStackNavigator,
-  createBottomTabNavigator,
-} from 'react-navigation';
 
 class UserImageScreen extends React.Component {
   constructor(props) {
@@ -117,47 +113,33 @@ class UserImageScreen extends React.Component {
         <View>
           <Text style={{textAlign: 'center', marginBottom: 12, marginTop: 12, fontWeight: 'bold', fontSize: 20}}>Mes images</Text>
         </View>
-      <GridView refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh}/>}
-        itemDimension={130}
-        items={this.state.data}
-        style={styles_grid.gridView}
-        renderItem={item => (
-        <TouchableHighlight onPress={() => navigate('testScreen', {img_data: item, img_mode: "myimg"})}>
-          <ImageBackground
-            source={{uri: this.check_link(item)}}
-            style={[styles_grid.itemContainer, { backgroundColor: '#bababa' }]}
-          >
-            <Text style={styles_grid.itemCode}>{item.views + " vues"}</Text>
-          </ImageBackground>
-        </TouchableHighlight>          
-        )}
-      />
+
+
+      {(this.state.data.length > 0) ? (
+         <GridView refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh}/>}
+         itemDimension={130}
+         items={this.state.data}
+         style={styles.gridView}
+         renderItem={item => (
+         <TouchableHighlight onPress={() => navigate('testScreen', {img_data: item, img_mode: "myimg"})}>
+           <ImageBackground
+             source={{uri: this.check_link(item)}}
+             style={[styles.itemContainer, { backgroundColor: '#bababa' }]}
+           >
+             <Text style={styles.itemCode}>{item.views + " vues"}</Text>
+           </ImageBackground>
+         </TouchableHighlight>          
+         )}
+       />
+          ):
+        <View style={{flex: 1, paddingLeft: 10, paddingRight: 10, justifyContent: 'center', alignContent: 'center'}}>
+          <Text style={{textAlign: 'center', fontSize: 30}}>:(</Text>
+          <Text style={{textAlign: 'center', fontSize: 30}}>Vous n'avez upload aucune image !</Text>
+        </View>
+         }
       </View>
-    )
+      ); 
   }
 }
-
-const styles_grid = StyleSheet.create({
-  gridView: {
-    paddingTop: 25,
-    flex: 1,
-  },
-  itemContainer: {
-    justifyContent: 'flex-end',
-    borderRadius: 5,
-    padding: 10,
-    height: 150,
-  },
-  itemName: {
-    fontSize: 16,
-    color: '#fff',
-    fontWeight: '600',
-  },
-  itemCode: {
-    fontWeight: '600',
-    fontSize: 12,
-    color: '#fff',
-  },
-});
 
 export default UserImageScreen;
