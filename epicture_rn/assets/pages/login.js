@@ -1,10 +1,10 @@
-import styles from '../styles/styles';
-import React from 'react';
-import {Image, StyleSheet, Text, View, Button } from 'react-native';
-import {AuthSession} from 'expo';
-import SyncStorage from 'sync-storage';
-import IonIcon from 'react-native-vector-icons/Ionicons';
-import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';
+import styles from '../styles/styles'
+import React from 'react'
+import {Image, Text, View } from 'react-native'
+import {AuthSession} from 'expo'
+import SyncStorage from 'sync-storage'
+import { Ionicons } from '@expo/vector-icons'
+import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue'
 
 
 class Login extends React.Component {
@@ -21,7 +21,7 @@ class Login extends React.Component {
         <AwesomeButtonBlue backgroundColor="#90AFC5" backgroundDarker="#336B87" raiseLevel={2}
         borderRadius={30}
         onPress={this._handlePressAsync}> 
-        <IonIcon name="ios-arrow-forward" color="white" size={15} />
+        <Ionicons name="ios-arrow-forward" color="white" size={15} />
         <Text style={{color: "white", fontWeight: "bold", fontSize: 16}}>    Se connecter</Text>
         </AwesomeButtonBlue>
         {this.state.result ? (

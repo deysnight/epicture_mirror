@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
-import IonIcon from 'react-native-vector-icons/Ionicons';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Ionicons } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import DescriptionScreen from './description/desc';
 import UserImageScreen from './description/my_image';
 import InfosScreen from './description/infos';
@@ -13,7 +13,7 @@ const ProfileTabs = createBottomTabNavigator({
         navigationOptions: {
             title: "Description",
             tabBarIcon: ({tintColor}) => (
-                <IonIcon name="md-paper" color={tintColor} size={24} />
+                <Ionicons name="md-paper" color={tintColor} size={24} />
             )
         }
     },
@@ -22,7 +22,7 @@ const ProfileTabs = createBottomTabNavigator({
         navigationOptions: {
             title: "Mes images",
             tabBarIcon: ({tintColor}) => (
-                <FeatherIcon name="image" color={tintColor} size={24} />
+                <Feather name="image" color={tintColor} size={24} />
             )
         }
     },

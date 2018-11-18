@@ -2,11 +2,8 @@ import styles from '../styles/styles';
 import React from 'react';
 import {Alert, TextInput, Image, Text, View, TouchableOpacity } from 'react-native';
 import SyncStorage from 'sync-storage';
-
-
 import { ImagePicker } from 'expo';
 import AwesomeButtonBlue from 'react-native-really-awesome-button/src/themes/blue';
-import ImgToBase64 from 'react-native-image-base64';
 
 
 const defaultState = {

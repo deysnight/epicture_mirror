@@ -9,6 +9,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@types/expo__vector-icons": "^6.2.3",
     "abortcontroller-polyfill": "^1.1.9",
     "expo": "^30.0.1",
     "http-response-object": "^3.0.1",

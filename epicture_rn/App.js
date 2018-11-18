@@ -16,9 +16,9 @@ import {
   SafeAreaView,
 } from 'react-navigation';
 import Profile from './assets/pages/profile'
-import IonIcon from 'react-native-vector-icons/Ionicons';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import { Ionicons } from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
 
 const HeaderDrawer = (props) => (
   <SafeAreaView style={{flex: 1}}>
@@ -51,31 +51,31 @@ const DrawerStack = createDrawerNavigator({
     navigationOptions: {
       title: "Images Populaires",
       drawerLabel: "Image Populaires",
-      drawerIcon: ({tintColor}) => (<FontAwesomeIcon style={{color:tintColor}} name="star-o" color="black" size={24} />)
+      drawerIcon: ({tintColor}) => (<FontAwesome style={{color:tintColor}} name="star-o" color="black" size={24} />)
     }
    },
    "Recherche": { screen: SearchScreen,
     navigationOptions: {
       title: "Recherche",
-      drawerIcon: ({tintColor}) => (<IonIcon style={{color:tintColor}} name="ios-search" color="black" size={24} />)
+      drawerIcon: ({tintColor}) => (<Ionicons style={{color:tintColor}} name="ios-search" color="black" size={24} />)
     }
    },
   "Mes favoris": { screen: (props) => <FavorisScreen {...props} img_mode={"myFav"} />,//FavorisScreen,
     navigationOptions: {
       title: "Mes favoris",
-      drawerIcon: ({tintColor}) => (<FontAwesomeIcon style={{color:tintColor}} name="heart-o" color="black" size={24} />)
+      drawerIcon: ({tintColor}) => (<FontAwesome style={{color:tintColor}} name="heart-o" color="black" size={24} />)
     } 
   },
   "Upload": { screen: UploadScreen,
     navigationOptions: {
       title: "Upload",
-      drawerIcon: ({tintColor}) => (<FeatherIcon style={{color:tintColor}} name="upload" color="black" size={24} />)
+      drawerIcon: ({tintColor}) => (<Feather style={{color:tintColor}} name="upload" color="black" size={24} />)
     }
   },
   Profile: { screen: Profile,
     navigationOptions: {
       drawerLabel: 'Profil',
-      drawerIcon: ({tintColor}) => (<FeatherIcon style={{color:tintColor}} name="user" color="black" size={24} />)
+      drawerIcon: ({tintColor}) => (<Feather style={{color:tintColor}} name="user" color="black" size={24} />)
     }
   }
   }, {
@@ -123,7 +123,7 @@ const DrawerNavigation = createStackNavigator({
     headerLeft: (
       <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('grey', true)} onPress={() => navigation.openDrawer()}>
         <View style={{ marginLeft: 10, borderRadius: 100}}>
-          <IonIcon name="ios-menu" color="black" size={34}  />
+          <Ionicons name="ios-menu" color="black" size={34}  />
         </View>
       </TouchableNativeFeedback>
   )})
